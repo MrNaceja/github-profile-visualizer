@@ -5,14 +5,15 @@ export const Container = styled.aside`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    /* background: lightblue; */
 `
 
 export const InfoLinks = styled.nav`
     display:flex;
-    width: 100%;
     align-items: center;
     flex-direction: column;
     gap:1rem;
+    width:100%;
 `
 
 export const InfoLink = styled.a`
@@ -20,7 +21,7 @@ export const InfoLink = styled.a`
     display: flex;
     align-items: center;
     gap:10px;
-    width: 100%;
+    width:100%;
     cursor: pointer;
 `
 

@@ -43,9 +43,9 @@ export const Header = styled.header`
     }
 `
 
-export const GridProfile = styled.main`
+export const GridProfileDashboard = styled.main`
     display: grid;
     padding:0 5rem;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
 `
 

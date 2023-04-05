@@ -16,10 +16,10 @@ export default function Home() {
                     <h1>Eduardo Toriani</h1>
                 </Styled.Logo>
             </Styled.Header>
-            <Styled.GridProfile>
+            <Styled.GridProfileDashboard>
                 <Profile />
                 <TabDashboard />
-            </Styled.GridProfile>
+            </Styled.GridProfileDashboard>
        </Styled.Container>
     )
 }
