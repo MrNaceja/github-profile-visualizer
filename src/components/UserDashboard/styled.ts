@@ -64,3 +64,9 @@ export const TabHeaderView = styled.header`
     justify-content: space-between;
     gap: 6.5rem;
 `
+
+export const FiltersArea = styled.div`
+    display:flex;
+    align-items: center;
+    gap: 1rem;
+`
