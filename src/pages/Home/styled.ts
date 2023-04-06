@@ -5,47 +5,22 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
 `
-export const Logo = styled.div`
-    display: flex;
-    align-items:center;
-    justify-content: flex-start;
-    height: 100%;
-    column-gap: 1.375rem;
 
-    & span {
-        font-size:1.5rem;
-        color: ${props => props.theme.GRAY_100};
-        font-weight: bold;
-    }
-    & h1 {
-        color: ${props => props.theme.GRAY_100};
-        font-weight: 300;
-    }
-
-    & img {
-        max-height: 100%;
-    }
-
-    & img:first-child{
-        height: 50%;
-    }
-
-`
 export const Header = styled.header`
     height: 4.5rem;
     width:100%;
-    padding:.5rem;
     background: ${props => props.theme.GRAY_800};
-    padding:0 5rem;
+    padding:1.3125rem 14.25rem;
 
     @media screen and (max-width: 480px) {
         display: none;
     }
 `
 
-export const GridProfileDashboard = styled.main`
+export const GridUserProfile = styled.main`
     display: grid;
-    padding:0 5rem;
-    grid-template-columns: 1fr 3fr;
+    padding:0 14.25rem;
+    grid-template-columns: 250px 1fr;
+    /* align-items: flex-start; */
 `
 

@@ -1,25 +1,19 @@
 import * as Styled from './styled'
 
-import GitHubLogo from '../../assets/github-mark/GitHub_Logo_White.png'
-import GitHubAvatarLogo from '../../assets/github-mark/github-mark-white.svg'
-import Profile from '../../components/Profile'
-import TabDashboard from '../../components/TabDashboard'
+import UserInfo      from '../../components/UserInfo'
+import UserDashboard from '../../components/UserDashboard'
+import GithubLogo    from '../../components/GithubLogo'
 
 export default function Home() {
     return (
        <Styled.Container>
             <Styled.Header>
-                <Styled.Logo >
-                    <img src={GitHubAvatarLogo} alt="GitHub Avatar" />
-                    <img src={GitHubLogo}       alt="GitHub" />
-                    <span>/</span>
-                    <h1>Eduardo Toriani</h1>
-                </Styled.Logo>
+              <GithubLogo />
             </Styled.Header>
-            <Styled.GridProfileDashboard>
-                <Profile />
-                <TabDashboard />
-            </Styled.GridProfileDashboard>
+            <Styled.GridUserProfile>
+                <UserInfo />
+                <UserDashboard />
+            </Styled.GridUserProfile>
        </Styled.Container>
     )
 }
