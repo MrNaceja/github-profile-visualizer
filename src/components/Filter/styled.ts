@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import * as Select from '@radix-ui/react-select';
-import { CaretDown } from "phosphor-react";
 
 export const Container = styled(Select.Root)``
 
@@ -14,6 +13,7 @@ export const FilterSelect = styled(Select.Trigger)`
     align-items: center;
     justify-content: space-between;
     gap: 0.625rem;
+    cursor: pointer;
     
     ${({theme}) => css`
         background: linear-gradient(to right, ${theme.PRIMARY_800}, ${theme.PRIMARY_500});

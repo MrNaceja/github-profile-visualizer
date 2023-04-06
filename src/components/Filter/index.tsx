@@ -3,6 +3,7 @@ import { CaretDown } from 'phosphor-react';
 import * as Styled from './styled'
 
 interface IFilterProps {
+    /** Texto padrão para ser exibido quando nenhum filtro for selecionado */
     placeholder: string
 }
 

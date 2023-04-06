@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${ props => props.theme.GRAY_800};
     min-height: 100vh;
     min-width:100vw;
+    overflow-x: hidden;
  }
 
  body, input, textarea, button {

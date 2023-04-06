@@ -1,10 +1,10 @@
 import * as Styled from './styled'
 
 import UserInfo      from '../../components/UserInfo'
-import UserDashboard from '../../components/UserDashboard'
+import UserRepositories from '../../components/UserRepositories'
 import GithubLogo    from '../../components/GithubLogo'
 
-export default function Home() {
+export default function Profile() {
     return (
        <Styled.Container>
             <Styled.Header>
@@ -12,7 +12,7 @@ export default function Home() {
             </Styled.Header>
             <Styled.GridUserProfile>
                 <UserInfo />
-                <UserDashboard />
+                <UserRepositories />
             </Styled.GridUserProfile>
        </Styled.Container>
     )
