@@ -53,4 +53,14 @@ export const TabIndicator = styled(Trigger) <TStyledTabIndicatorProps>`
     
 `
 
-export const TabView = styled(Content)``
+export const TabView = styled(Content)`
+
+`
+
+export const TabHeaderView = styled.header`
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6.5rem;
+`

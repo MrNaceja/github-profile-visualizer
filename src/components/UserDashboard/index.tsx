@@ -1,5 +1,6 @@
 import { BookBookmark, Star } from 'phosphor-react'
 import * as Styled from './styled'
+import Search from '../Search'
 
 enum Tabs {
     TAB_REPOSITORIES = 'TAB_REPOSITORIES',
@@ -14,10 +15,14 @@ export default function UserDashboard() {
                 <Styled.TabIndicator counter={12} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
-                <h1>Tab 1</h1>
+                <Styled.TabHeaderView>
+                    <Search />
+                </Styled.TabHeaderView>
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
-                <h1>Tab 2</h1>
+                <Styled.TabHeaderView>
+                    <Search />
+                </Styled.TabHeaderView>
             </Styled.TabView>
         </Styled.Container>
     )
