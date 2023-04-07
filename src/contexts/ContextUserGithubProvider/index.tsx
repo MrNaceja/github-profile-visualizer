@@ -16,9 +16,15 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
 
     async function fetchProfile() {
         const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
-        setUser(await Api.fetchUser())
-        setRepositories(await Api.fetchRepositories())
-        setStarreds(await Api.fetchRepositories(true))
+        const [userProfile, userRepositories, userRepositoriesStarred] = [
+            await Api.fetchUser(), 
+            await Api.fetchRepositories(), 
+            await Api.fetchRepositories(true)
+        ]
+        setUser        (userProfile)
+        setRepositories(userRepositories)
+        setStarreds    (userRepositoriesStarred)
+        document.title = 'Github Profile | ' + userProfile.name
     }
 
     useEffect(() => {
