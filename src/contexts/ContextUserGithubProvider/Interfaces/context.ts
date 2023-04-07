@@ -6,7 +6,9 @@ export interface IContextUserGithubValues {
     /** Usuário do perfil*/
     user: IUser,
     /** Repositórios do usuário */
-    repositories: IRepository[]
+    repositories: IRepository[],
+    /** Repositórios favoritados do usuário */
+    starreds: IRepository[]
 }
 
 export interface IContextUserGithubProps {

@@ -12,18 +12,23 @@ const USER_TO_PROFILE_INTERFACE = 'MrNaceja';
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
     const [user, setUser] = useState<IUser>({} as IUser)
     const [repositories, setRepositories] = useState<IRepository[]>([])
+    const [starreds, setStarreds] = useState<IRepository[]>([])
 
-    async function fetchUser() {
-        setUser(await ApiGithub(USER_TO_PROFILE_INTERFACE).fetchUser())
+    async function fetchProfile() {
+        const Api = ApiGithub(USER_TO_PROFILE_INTERFACE)
+        setUser(await Api.fetchUser())
+        setRepositories(await Api.fetchRepositories())
+        // setStarreds(await Api.fetchRepositoriesStarreds())
     }
     useEffect(() => {
-        fetchUser()
-    })
+        fetchProfile()
+    }, [])
 
     return (
         <ContextUserGithub.Provider value={{
             user, 
-            repositories
+            repositories,
+            starreds
         }}>
             { children }
         </ContextUserGithub.Provider>

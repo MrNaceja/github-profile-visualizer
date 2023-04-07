@@ -16,7 +16,7 @@ export default function UserInfo() {
             <Styled.InfoLinks>
                 <Styled.InfoLink> <Buildings size={16} /> {user.company} </Styled.InfoLink>
                 <Styled.InfoLink> <MapPin size={16} /> {user.location} </Styled.InfoLink>
-                <Styled.InfoLink href={user.githubUrl}> <GithubLogo size={16} /> Ver Github </Styled.InfoLink>
+                <Styled.InfoLink href={user.githubUrl} target='_blank'> <GithubLogo size={16} /> Ver Github </Styled.InfoLink>
             </Styled.InfoLinks>
         </Styled.Container>
     )

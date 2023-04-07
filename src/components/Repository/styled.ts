@@ -12,7 +12,9 @@ export const Title = styled.h1`
     font-weight: 400;
     ${({ theme }) => css`
         color: ${theme.GRAY_600};
-        strong {
+        a {
+            font-weight: bold;
+            text-decoration: none;
             color: ${theme.PRIMARY_500};
             cursor: pointer;
         }

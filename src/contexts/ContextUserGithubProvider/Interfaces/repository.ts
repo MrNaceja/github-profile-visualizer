@@ -1,15 +1,14 @@
 export interface IRepository {
     /** Nome do Repositório */
-    name: string,
+    owner: string,
     /** Workspace do Repositório */
-    workspace: string,
+    name: string,
+    /** URL para acesso ao Repositório no github */
+    urlGithub: string,
     /** Descrição do Repositório */
     description?: string,
-    /** Linguagens predominantes */
-    predominantLanguage: TPredominantsLanguages,
-    /** Quantidade de Branchs */
-    branchs: number,
-    /** Repositório está favoritado? */
-    starred?: boolean
+    /** Linguagem Predominante */
+    predominantLanguage: string,
+    /** Quantidade de Branches do Repositório */
+    branches: number,
 }
-export type TPredominantsLanguages = 'Javascript' | 'Typescript' |'React' | 'HTML' | 'CSS' | 'PHP';

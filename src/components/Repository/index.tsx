@@ -10,13 +10,13 @@ interface IRepositoryProps {
 export default function Repository({ repository } : IRepositoryProps) {
     return (
         <Styled.Container>
-            <Styled.Title>Magazord teste / <strong>Front-end</strong></Styled.Title>
-            <Styled.Description>Tempor qui proident culpa mollit quis amet consectetur elit consectetur in labore anim officia mollit.</Styled.Description>
+            <Styled.Title> {repository.owner} / <a href={repository.urlGithub} target="_blank">{repository.name}</a></Styled.Title>
+            <Styled.Description>{repository.description}</Styled.Description>
             <Styled.Information>
-                <Styled.PredominantLanguage>React</Styled.PredominantLanguage>
+                <Styled.PredominantLanguage>{repository.predominantLanguage}</Styled.PredominantLanguage>
                 <Styled.BranchesIndicator>
                     <GitBranch size={20} />
-                    325
+                    {repository.branches}
                 </Styled.BranchesIndicator>
             </Styled.Information>
         </Styled.Container>

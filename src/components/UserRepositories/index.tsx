@@ -3,7 +3,6 @@ import * as Styled from './styled'
 import Search from '../Search'
 import Filter from '../Filter'
 import Repository from '../Repository'
-import { useState } from 'react'
 import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
 
 enum Tabs {
@@ -12,17 +11,14 @@ enum Tabs {
 }
 
 export default function UserRepositories() {
-    const repositories = useRepositories()
-    
-    const countRepositories = repositories.length
-    const countStarred      = repositories.filter(rep => rep.starred).length
+    const [ repositories, starreds ] = useRepositories(true)
 
     return (
         <Styled.Container orientation="horizontal" defaultValue={Tabs.TAB_REPOSITORIES}>
             <Styled.HeaderTab>
                 <Styled.HeaderTabIndicators>
-                    <Styled.TabIndicator counter={countRepositories} value={Tabs.TAB_REPOSITORIES}> <BookBookmark size={24} weight="bold"/> Repositories </Styled.TabIndicator>
-                    <Styled.TabIndicator counter={countStarred} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
+                    <Styled.TabIndicator counter={repositories.length} value={Tabs.TAB_REPOSITORIES}> <BookBookmark size={24} weight="bold"/> Repositories </Styled.TabIndicator>
+                    <Styled.TabIndicator counter={starreds.length} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
                     <Search />
@@ -41,8 +37,8 @@ export default function UserRepositories() {
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
                 {
-                    repositories.map(rep => (
-                        rep.starred && <Repository repository={rep}/>
+                    starreds.map(repStarred => (
+                        <Repository repository={repStarred}/>
                     ))
                 }
             </Styled.TabView>
