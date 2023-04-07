@@ -1,7 +1,13 @@
 import { GitBranch } from 'phosphor-react'
 import * as Styled from './styled'
+import { IRepository } from '../../contexts/ContextUserGithubProvider/Interfaces/repository'
 
-export default function Repository() {
+interface IRepositoryProps {
+    /** Modelo de dados do Repositório */
+    repository: IRepository
+}
+
+export default function Repository({ repository } : IRepositoryProps) {
     return (
         <Styled.Container>
             <Styled.Title>Magazord teste / <strong>Front-end</strong></Styled.Title>
