@@ -25,7 +25,7 @@ export const HeaderTabSearchFilters = styled.div`
     display:flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6.5rem;
+    gap: 1rem;
 `
 
 type TStyledTabIndicatorProps = {

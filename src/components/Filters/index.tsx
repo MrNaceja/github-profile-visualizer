@@ -6,51 +6,53 @@ import { useState } from 'react';
 export default function Filters() {
 
     const languages = ['JS', 'React', 'Java', 'PHP']
+    const types = ['All', 'Sources', 'Forks', 'Archived', 'Mirrors']
+
     const [languagesToFilter, setLanguagesToFilter] = useState(['Java'])
+    const [typesToFilter, setTypesToFilter] = useState(['All'])
 
     return (
         <Styled.Container>
             <Styled.Filter>
                 <Styled.FilterIndicator>
-                    <CaretDown size={20} weight="bold"/> Type
+                    <CaretDown size={20} weight="bold"/> Filters
                 </Styled.FilterIndicator>
                 <Styled.FilterModal>
                     <Styled.FilterSelect>
+                        <Styled.FilterSelectItemLabelGroup>Languages</Styled.FilterSelectItemLabelGroup>
                     {
-                        languages.map((lang, id) => {
+                        languages.map(lang => {
                             const isCheckedToFilter = languagesToFilter.includes(lang)
                             return (
                                 <Styled.FilterSelectItem 
-                                    key={id}
+                                    key={lang}
                                     checked={isCheckedToFilter}
                                 >
-                                { isCheckedToFilter /** transformar isso em componente estilizado validadno o checked */
-                                    ? <CheckSquare weight="fill" size={20} /> 
-                                    : <Square weight="bold" size={20} />
-                                }
+                                { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
                                 { lang }
                                 </Styled.FilterSelectItem>
                             )
                         })
                     }   
+                    <Styled.FilterSelectItemSeparator />
+                    <Styled.FilterSelectItemLabelGroup>Types</Styled.FilterSelectItemLabelGroup>
+                    {
+                        types.map(type => {
+                            const isCheckedToFilter = typesToFilter.includes(type)
+                            return (
+                                <Styled.FilterSelectItem 
+                                    key={type}
+                                    checked={isCheckedToFilter}
+                                >
+                                { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
+                                { type }
+                                </Styled.FilterSelectItem>
+                            )
+                        })
+                    }
                     </Styled.FilterSelect>
                 </Styled.FilterModal>
             </Styled.Filter>
-            {/* <Styled.Filter>
-                <Styled.FilterIndicator>
-                    <CaretDown size={20} weight="bold"/> Language
-                </Styled.FilterIndicator>
-                <Styled.FilterModal>
-                    <Styled.FilterSelect>
-                        <Styled.FilterSelectItem>
-                            <Styled.FilterSelectItemIcon>
-                                <Check size={5} />
-                            </Styled.FilterSelectItemIcon>
-                            language
-                        </Styled.FilterSelectItem>
-                    </Styled.FilterSelect>
-                </Styled.FilterModal>
-            </Styled.Filter> */}
         </Styled.Container>
     )
 }
