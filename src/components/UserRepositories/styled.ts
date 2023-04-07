@@ -84,7 +84,7 @@ export const TabView = styled(Content)`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: 3.125rem;
     flex: 1;
 
     &:not([data-state='active']) {

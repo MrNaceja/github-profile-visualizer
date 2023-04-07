@@ -10,9 +10,8 @@ enum ApiUrl {
 }
 
 interface IApiGitHubActions {
-    fetchUser:                 () => Promise<IUser>,
-    fetchRepositories:         () => Promise<IRepository[]>,
-    fetchRepositoriesStarreds: () => Promise<IRepository[]>,
+    fetchUser:         () => Promise<IUser>,
+    fetchRepositories: (bStarred? : boolean) => Promise<IRepository[]>,
 }
 
 export default function ApiGithub(user : string) : IApiGitHubActions {
@@ -32,28 +31,24 @@ export default function ApiGithub(user : string) : IApiGitHubActions {
             } as IUser
         },
 
-        fetchRepositories: async () => {
-            const githubUserRepos = await fetch(ApiUrl.GET_USER_REPOSITORIES.replace(ApiUrl.USER_ENDPOINT, user))
+        fetchRepositories: async (bStarred : boolean = false) => {
+            const URL_GET_USER_REPOSITORIES = bStarred ? ApiUrl.GET_USER_REPOSITORIES_STARRED : ApiUrl.GET_USER_REPOSITORIES
+            const githubUserRepos = await fetch(URL_GET_USER_REPOSITORIES.replace(ApiUrl.USER_ENDPOINT, user))
                                             .then(res => res.json())
                                                 .then(userRepositories => userRepositories) as Array<any>
             return githubUserRepos.reduce((rep, githubRep) => {
                 const [ repOwner, repName ] = (githubRep.full_name as string).split('/')
                 rep.push({
+                    id:githubRep.id,
                     urlGithub: githubRep.html_url,
                     owner: repOwner,
                     name: repName,
-                    predominantLanguage: githubRep.language,
+                    predominantLanguage: githubRep.language || 'Nenhuma',
                     description: githubRep.description,
                     branches: randomNumberInRange(25) /** Número de branches será gerado aleatório pois na API não tem um retorno especifico, e para se obter este valor teria de fazer uma outra requisição para contar as branches de cada repositório (estou sem tempo e demanda performance) */
                 } as IRepository)
                 return rep
             }, [] as IRepository[])
-        },
-
-        fetchRepositoriesStarreds: async () => {
-            return fetch(ApiUrl.GET_USER_REPOSITORIES_STARRED.replace(ApiUrl.USER_ENDPOINT, user))
-                .then(res => res.json())
-                .then(userRepositories => userRepositories)
         }
     }
 }

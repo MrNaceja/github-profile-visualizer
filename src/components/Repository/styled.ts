@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-    height: 8.75rem;
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
@@ -9,12 +8,11 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
     font-size: 1.125rem;
-    font-weight: 400;
+    font-weight: 300;
     ${({ theme }) => css`
-        color: ${theme.GRAY_600};
+        color: ${theme.GRAY_800};
         a {
             font-weight: bold;
-            text-decoration: none;
             color: ${theme.PRIMARY_500};
             cursor: pointer;
         }

@@ -31,14 +31,14 @@ export default function UserRepositories() {
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
                 {
                     repositories.map(rep => (
-                        <Repository repository={rep}/>
+                        <Repository repository={rep} key={rep.id}/>
                     ))
                 }
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
                 {
                     starreds.map(repStarred => (
-                        <Repository repository={repStarred}/>
+                        <Repository repository={repStarred} key={repStarred.id}/>
                     ))
                 }
             </Styled.TabView>

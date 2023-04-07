@@ -1,4 +1,6 @@
 export interface IRepository {
+    /** Identificador único do Repositório */
+    id: string,
     /** Nome do Repositório */
     owner: string,
     /** Workspace do Repositório */

@@ -21,6 +21,7 @@ export const GridUserProfile = styled.main`
     display: grid;
     padding:0 14.25rem;
     grid-template-columns: 250px 1fr;
-    /* align-items: flex-start; */
+    gap: 4.0625rem;
+    align-items: flex-start;
 `
 
