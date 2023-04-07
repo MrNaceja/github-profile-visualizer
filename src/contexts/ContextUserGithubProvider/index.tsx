@@ -7,7 +7,7 @@ import { IRepository } from "./Interfaces/repository";
 export const ContextUserGithub = createContext({} as IContextUserGithubValues)
 
 /** Mudar aqui para ver outros perfis */
-const USER_TO_PROFILE_INTERFACE = 'MrNaceja';
+const USER_PROFILE_TO_INTERFACE = 'MrNaceja';
 
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
     const [user, setUser] = useState<IUser>({} as IUser)
@@ -15,11 +15,12 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
     const [starreds, setStarreds] = useState<IRepository[]>([])
 
     async function fetchProfile() {
-        const Api = ApiGithub(USER_TO_PROFILE_INTERFACE)
+        const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
         setUser(await Api.fetchUser())
         setRepositories(await Api.fetchRepositories())
         setStarreds(await Api.fetchRepositories(true))
     }
+
     useEffect(() => {
         fetchProfile()
     }, [])
