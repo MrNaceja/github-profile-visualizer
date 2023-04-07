@@ -14,11 +14,11 @@ export default function Filters() {
     return (
         <Styled.Container>
             <Styled.Filter>
-                <Styled.FilterIndicator>
+                <Styled.FilterButton>
                     <CaretDown size={20} weight="bold"/> Filters
-                </Styled.FilterIndicator>
-                <Styled.FilterModal>
-                    <Styled.FilterSelect>
+                </Styled.FilterButton>
+                <Styled.FilterSelect>
+                    <Styled.FilterModal>
                         <Styled.FilterSelectItemLabelGroup>Languages</Styled.FilterSelectItemLabelGroup>
                     {
                         languages.map(lang => {
@@ -27,6 +27,11 @@ export default function Filters() {
                                 <Styled.FilterSelectItem 
                                     key={lang}
                                     checked={isCheckedToFilter}
+                                    onCheckedChange={(check) => {
+                                        check 
+                                        ? setLanguagesToFilter(curr => [...curr, lang])
+                                        : setLanguagesToFilter(curr => [...curr.filter(langCurr => langCurr != lang)])
+                                    }}
                                 >
                                 { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
                                 { lang }
@@ -50,8 +55,8 @@ export default function Filters() {
                             )
                         })
                     }
-                    </Styled.FilterSelect>
-                </Styled.FilterModal>
+                    </Styled.FilterModal>
+                </Styled.FilterSelect>
             </Styled.Filter>
         </Styled.Container>
     )

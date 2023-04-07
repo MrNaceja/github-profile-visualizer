@@ -11,7 +11,7 @@ export const Container = styled(FiltersMenu.Root)`
 
 export const Filter = styled(FiltersMenu.Menu)``
 
-export const FilterIndicator = styled(FiltersMenu.Trigger)`
+export const FilterButton = styled(FiltersMenu.Trigger)`
     all: unset;
     padding: 0.59375rem 1rem;
     color: ${props => props.theme.PRIMARY_500};
@@ -21,8 +21,9 @@ export const FilterIndicator = styled(FiltersMenu.Trigger)`
     align-items: center;
     justify-content: space-between;
     gap: 0.625rem;
-    cursor: pointer;
     flex:1;
+    cursor: pointer;
+
     &[data-state='open'] {
         ${({theme}) => css`
             background: linear-gradient(to right, ${theme.PRIMARY_800}, ${theme.PRIMARY_500});
@@ -31,23 +32,23 @@ export const FilterIndicator = styled(FiltersMenu.Trigger)`
     }
 `
 
-export const FilterModal = styled(FiltersMenu.Portal)``
+export const FilterSelect = styled(FiltersMenu.Portal)``
 
-export const FilterSelect = styled(FiltersMenu.Content)`
+export const FilterModal = styled(FiltersMenu.Content)`
     margin-top: 5px;
     min-width: 220px;
     background-color: ${props => props.theme.LIGHT};
     border-radius: 8px;
     padding: .5rem;
-  /* box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2); */
+  box-shadow: 0px 10px 20px -10px ${props => props.theme.GRAY_200}
 `
 export const FilterSelectItem = styled(FiltersMenu.CheckboxItem)`
     display:flex;
     gap: 1rem;
     padding-left: 5px;
-    cursor: pointer;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 
     :hover {
         background: ${props => props.theme.GRAY_100}80;
