@@ -28,12 +28,6 @@ export const HeaderTabSearchFilters = styled.div`
     gap: 6.5rem;
 `
 
-export const FiltersArea = styled.div`
-    display:flex;
-    align-items: center;
-    gap: 1rem;
-`
-
 type TStyledTabIndicatorProps = {
     /** Número indicador presente ao lado do nome da tab */
     counter: number

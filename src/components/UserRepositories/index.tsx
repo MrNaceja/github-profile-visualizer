@@ -1,9 +1,10 @@
 import { BookBookmark, Star } from 'phosphor-react'
 import * as Styled from './styled'
 import Search from '../Search'
-import Filter from '../Filter'
+import Filter from '../Filters'
 import Repository from '../Repository'
 import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
+import Filters from '../Filters'
 
 enum Tabs {
     TAB_REPOSITORIES = 'TAB_REPOSITORIES',
@@ -22,10 +23,7 @@ export default function UserRepositories() {
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
                     <Search />
-                    <Styled.FiltersArea>
-                        <Filter placeholder="Type"/>
-                        <Filter placeholder="Language"/>
-                    </Styled.FiltersArea>
+                    <Filters />
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
