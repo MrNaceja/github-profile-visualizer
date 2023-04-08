@@ -15,7 +15,7 @@ export default function Filters() {
         <Styled.Container>
             <Styled.Filter>
                 <Styled.FilterButton>
-                    <CaretDown size={20} weight="bold"/> Filters
+                    <CaretDown size={20} weight="bold"/>Filters
                 </Styled.FilterButton>
                 <Styled.FilterSelect>
                     <Styled.FilterModal>
@@ -48,6 +48,11 @@ export default function Filters() {
                                 <Styled.FilterSelectItem 
                                     key={type}
                                     checked={isCheckedToFilter}
+                                    onCheckedChange={(check) => {
+                                        check 
+                                        ? setTypesToFilter(curr => [...curr, type])
+                                        : setTypesToFilter(curr => [...curr.filter(typeCurr => typeCurr != type)])
+                                    }}
                                 >
                                 { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
                                 { type }

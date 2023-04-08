@@ -40,7 +40,7 @@ export const FilterModal = styled(FiltersMenu.Content)`
     background-color: ${props => props.theme.LIGHT};
     border-radius: 8px;
     padding: .5rem;
-  box-shadow: 0px 10px 20px -10px ${props => props.theme.GRAY_200}
+  box-shadow: 0px 10px 20px -10px ${props => props.theme.GRAY_200};
 `
 export const FilterSelectItem = styled(FiltersMenu.CheckboxItem)`
     display:flex;
@@ -64,6 +64,8 @@ export const FilterSelectItemSeparator = styled(FiltersMenu.Separator)`
 export const FilterSelectItemLabelGroup = styled(FiltersMenu.Label)`
     color: ${props => props.theme.GRAY_300};
     margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: .8rem;
 `
 
 export const IconCheck    = styled(CheckSquare).attrs(props => ({size: 20, weight: "fill", color: props.theme.PRIMARY_500} as IconProps))``

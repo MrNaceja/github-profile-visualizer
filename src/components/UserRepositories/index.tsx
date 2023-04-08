@@ -1,7 +1,8 @@
 import { BookBookmark, Star } from 'phosphor-react'
+
 import * as Styled from './styled'
+
 import Search from '../Search'
-import Filter from '../Filters'
 import Repository from '../Repository'
 import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
 import Filters from '../Filters'
