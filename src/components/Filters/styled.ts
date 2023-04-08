@@ -23,7 +23,7 @@ export const FilterButton = styled(FiltersMenu.Trigger)`
     gap: 0.625rem;
     flex:1;
     cursor: pointer;
-
+    
     &[data-state='open'] {
         ${({theme}) => css`
             background: linear-gradient(to right, ${theme.PRIMARY_800}, ${theme.PRIMARY_500});
@@ -68,5 +68,5 @@ export const FilterSelectItemLabelGroup = styled(FiltersMenu.Label)`
     font-size: .8rem;
 `
 
-export const IconCheck    = styled(CheckSquare).attrs(props => ({size: 20, weight: "fill", color: props.theme.PRIMARY_500} as IconProps))``
+export const IconCheck   = styled(CheckSquare).attrs(props => ({size: 20, weight: "fill", color: props.theme.PRIMARY_500} as IconProps))``
 export const IconUncheck = styled(Square).attrs(props => ({size: 20, weight: "bold", color: props.theme.GRAY_300} as IconProps))``
