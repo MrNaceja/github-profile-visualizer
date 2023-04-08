@@ -17,12 +17,8 @@ export const LogoContainer = styled.div`
         font-weight: 300;
     }
 
-    & img { /** All logo github */
+    & img { /** Logo (imagem) Github  */
         max-height: 100%;
-    }
-
-    & img:first-child{ /** Avatar logo github */
-        height: 1.5rem
     }
 
 `
