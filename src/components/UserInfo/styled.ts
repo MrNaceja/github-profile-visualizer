@@ -5,6 +5,11 @@ export const Container = styled.aside`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+
+    /** Mobile */
+    /* @media screen and (max-width: 480px) {
+        margin
+    } */
 `
 
 export const InfoLinks = styled.nav`
@@ -13,7 +18,6 @@ export const InfoLinks = styled.nav`
     flex-direction: column;
     gap:1rem;
     width:100%;
-
 `
 
 export const InfoLink = styled.a`
@@ -51,6 +55,7 @@ export const Avatar = styled.div`
         width:40px;
         position: absolute;
         content: '😎';
+        font-size: 12px;
         background: #fff;
         border-radius: 50%;
         display: flex;
@@ -58,6 +63,20 @@ export const Avatar = styled.div`
         justify-content: center;
         right:0;
         bottom:0;
-        box-shadow: 0 5px 16px ${props => props.theme.GRAY_200}
+        padding: 0.46875rem;
+        box-shadow: 0 5px 16px ${props => props.theme.GRAY_200};
+        box-sizing: border-box;
+    }
+
+    /** Tablets */
+    @media screen and (max-width: 748px) {
+        img {
+            height: 105px;
+            width: 105px;
+        }
+        ::after {
+            height:27px;
+            width:27px;
+        }
     }
 `
