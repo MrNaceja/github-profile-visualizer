@@ -14,9 +14,7 @@ export default function Filters() {
     return (
         <Styled.Container>
             <Styled.Filter>
-                <Styled.FilterButton>
-                    <CaretDown size={20} weight="bold"/>Filters
-                </Styled.FilterButton>
+                <Styled.FilterButton />
                 <Styled.FilterSelect>
                     <Styled.FilterModal>
                         <Styled.FilterSelectItemLabelGroup>Languages</Styled.FilterSelectItemLabelGroup>

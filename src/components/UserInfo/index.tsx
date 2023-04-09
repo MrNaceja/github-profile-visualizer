@@ -13,7 +13,7 @@ export default function UserInfo() {
                 <h2>{user.name}</h2>
                 <p>{user.bio}</p>
             </Styled.InfoUser>
-            <Styled.InfoLinksWrapper defaultOpen>
+            <Styled.InfoLinksWrapper>
                 <Styled.InfoLinksButtonCollapse >
                     Informações Adicionais <CaretDown size={24} weight="bold"/>
                 </Styled.InfoLinksButtonCollapse>

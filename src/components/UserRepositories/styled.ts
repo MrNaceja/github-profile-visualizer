@@ -5,7 +5,6 @@ export const Container = styled(Root)`
     gap: 2.5rem;
     display: flex;
     flex-direction: column;
-    background-color: palegreen;
 `
 
 export const HeaderTab = styled.nav`
@@ -20,6 +19,12 @@ export const HeaderTabIndicators = styled(List)`
     display: flex;
     align-items: flex-start;
     gap: 3.5625rem;
+
+    /** Mobile */
+    @media screen and (max-width: 480px) {
+        gap:0;
+        justify-content: space-between;
+    }
 `
 export const HeaderTabSearchFilters = styled.div`
     width: 100%;
@@ -27,6 +32,11 @@ export const HeaderTabSearchFilters = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    
+    /** Mobile */
+    @media screen and (max-width:480px) {
+        flex-direction: row-reverse;
+    }
 `
 
 type TStyledTabIndicatorProps = {
@@ -71,6 +81,11 @@ export const TabIndicator = styled(Trigger) <TStyledTabIndicatorProps>`
     &[data-state='active'] {
         border-bottom: 2px solid ${props => props.theme.SECONDARY_500};
         color: ${props => props.theme.GRAY_800};
+    }
+
+    /** A partir de Tablets */
+    @media screen and (max-width: 748px) {
+        font-size: 1rem;
     }
     
 `

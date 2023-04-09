@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import * as FiltersMenu from "@radix-ui/react-menubar";
-import { CheckSquare, IconProps, Square } from "phosphor-react";
+import { CaretDown, CheckSquare, Funnel, IconProps, Square } from "phosphor-react";
+import React from "react";
 
 export const Container = styled(FiltersMenu.Root)`
     display:flex;
@@ -11,7 +12,12 @@ export const Container = styled(FiltersMenu.Root)`
 
 export const Filter = styled(FiltersMenu.Menu)``
 
-export const FilterButton = styled(FiltersMenu.Trigger)`
+
+export const FilterButton = styled(FiltersMenu.Trigger).attrs(props => ({
+    children: window.matchMedia('(max-width: 480px)').matches 
+                ? React.createElement(Funnel, {size: 20, weight:"fill"})
+                : [React.createElement(CaretDown, {size:20, weight:"bold"}), 'Filters']
+} as FiltersMenu.MenubarTriggerProps))`
     all: unset;
     padding: 0.59375rem 1rem;
     color: ${props => props.theme.PRIMARY_500};
@@ -34,13 +40,14 @@ export const FilterButton = styled(FiltersMenu.Trigger)`
 
 export const FilterSelect = styled(FiltersMenu.Portal)``
 
-export const FilterModal = styled(FiltersMenu.Content)`
-    margin-top: 5px;
+export const FilterModal = styled(FiltersMenu.Content).attrs(props => ({
+    sideOffset: 10
+} as FiltersMenu.MenuContentProps))`
     min-width: 220px;
     background-color: ${props => props.theme.LIGHT};
     border-radius: 8px;
     padding: .5rem;
-  box-shadow: 0px 10px 20px -10px ${props => props.theme.GRAY_200};
+    box-shadow: 0px 10px 20px -10px ${props => props.theme.GRAY_200};
 `
 export const FilterSelectItem = styled(FiltersMenu.CheckboxItem)`
     display:flex;

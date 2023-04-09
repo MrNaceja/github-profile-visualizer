@@ -29,7 +29,9 @@ export const InfoLinks = styled(Collapsible.Content)`
     }
 
 `
-export const InfoLinksWrapper = styled(Collapsible.Root)`
+export const InfoLinksWrapper = styled(Collapsible.Root).attrs(props => ({
+    defaultOpen: !window.matchMedia('(max-width:480px)').matches
+} as Collapsible.CollapsibleProps))`
     width:100%;
     display: flex;
     flex-direction: column;
