@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as Collapsible from '@radix-ui/react-collapsible'
 
 export const Container = styled.aside`
     display: flex;
@@ -7,17 +8,60 @@ export const Container = styled.aside`
     gap: 2rem;
 
     /** Mobile */
-    /* @media screen and (max-width: 480px) {
-        margin
-    } */
+    @media screen and (max-width: 480px) {
+        gap: 1rem;
+    }
 `
 
-export const InfoLinks = styled.nav`
+export const InfoLinks = styled(Collapsible.Content)`
     display:flex;
     align-items: flex-start;
     flex-direction: column;
     gap:1rem;
+
+    /** A partir de tablets mostra o botão de informações adicionais */
+    @media screen and (max-width: 748px) {
+        padding: 1rem;
+        &[data-state = 'open'] {
+            background: ${props => props.theme.GRAY_200}80;
+            border-radius: 16px;
+        }
+    }
+
+`
+export const InfoLinksWrapper = styled(Collapsible.Root)`
     width:100%;
+    display: flex;
+    flex-direction: column;
+
+    /** Mobile */
+    @media screen and (max-width: 480px) {
+        margin-top: 1.5rem;
+    }
+`
+
+export const InfoLinksButtonCollapse = styled(Collapsible.Trigger)`
+    all: unset;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    color: ${props => props.theme.PRIMARY_500};
+    transition: .4s;
+
+    svg {
+        transition: .2s;
+    }
+
+    &[data-state = 'open'] {
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    /** A partir de tablets mostra o botão de informações adicionais */
+    @media screen and (max-width: 748px) {
+        display: flex;
+    }
 `
 
 export const InfoLink = styled.a`

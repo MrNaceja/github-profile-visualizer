@@ -5,6 +5,7 @@ export const Container = styled(Root)`
     gap: 2.5rem;
     display: flex;
     flex-direction: column;
+    background-color: palegreen;
 `
 
 export const HeaderTab = styled.nav`

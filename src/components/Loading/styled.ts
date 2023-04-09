@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, ThemedStyledProps, css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {ReactComponent as GitHubAvatarLogo} from '../../assets/github-mark/github-mark.svg'
 
 export const Container = styled.section`
@@ -8,6 +8,7 @@ export const Container = styled.section`
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    padding: 1rem;
 `
 
 const AnimExpandLogo = keyframes`
@@ -33,5 +34,9 @@ export const LoadingLogo = styled(GitHubAvatarLogo)`
 
 export const LoadingMessage = styled.h1`
     font-size: 1.2rem;
-    color: ${props => props.theme.GRAY_300}
+    color: ${props => props.theme.GRAY_300};
+
+    @media screen and (max-width: 768px) {
+        font-size: 1rem;
+    }
 `

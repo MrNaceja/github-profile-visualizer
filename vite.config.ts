@@ -4,5 +4,8 @@ import svgr from 'vite-plugin-svgr'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: { /** Configuração para rodar o projeto em host senod possível acessar pelo dispositivo móvel */
+    host: true
+  },
   plugins: [react(), svgr()],
 })

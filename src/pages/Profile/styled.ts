@@ -18,7 +18,6 @@ export const GridUserProfile = styled.main`
     grid-template-columns: 250px 1fr;
     gap: 4.0625rem;
     align-items: flex-start;
-    background-color: palegoldenrod;
 
     /** Notebooks / Tablets */
     @media screen and (max-width: 960px) {
@@ -28,9 +27,8 @@ export const GridUserProfile = styled.main`
 
     /** Tablets */
     @media screen and (max-width: 748px) {
-        padding:1.5rem;
-        /* gap: 1.5rem; */
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
+        gap: 2.5rem;
     }
 `
 
@@ -38,7 +36,7 @@ export const Container = styled.section`
         gap:2rem;
         display: flex;
         flex-direction: column;
-        background-color: rebeccapurple;
+        min-height: 100vh;
     
         /** Mobile */
         @media screen and (max-width: 480px) {
