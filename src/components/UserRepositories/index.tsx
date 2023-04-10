@@ -14,8 +14,8 @@ export enum Tabs {
 }
 
 export default function UserRepositories() {
-    const [ repositories, starreds ] = useRepositories(true)
-    const [activeTab, setActiveTab] = useState<Tabs>(Tabs.TAB_REPOSITORIES)
+    const [ repositories, starreds]  = useRepositories()
+    const [ activeTab, setActiveTab ] = useState<Tabs>(Tabs.TAB_REPOSITORIES)
 
     return (
         <Styled.Container orientation="horizontal" defaultValue={activeTab} value={activeTab} onValueChange={tab => setActiveTab(tab as Tabs)}>
