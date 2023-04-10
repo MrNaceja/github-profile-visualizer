@@ -11,21 +11,43 @@ export const ContextUserGithub = createContext({} as IContextUserGithubValues)
 const USER_PROFILE_TO_INTERFACE = 'MrNaceja';
 
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
-    const [user, setUser]                 = useState<IUser>({} as IUser)
-    const [repositories, setRepositories] = useState<IRepository[]>([])
-    const [starreds, setStarreds]         = useState<IRepository[]>([])
+    const [user, setUser]                     = useState<IUser>({} as IUser)
+    const [repositories, setRepositories]     = useState<IRepository[]>([])
+    const [starreds, setStarreds]             = useState<IRepository[]>([])
     const [loadingProfile, setLoadingProfile] = useState(true)
+
+    async function searchRepositories(search? : string) {
+        if (!search || search.length == 0) {
+            return loadRepositories()
+        }
+        setRepositories(reposState => reposState.filter(rep => rep.name.match(search)))
+    }
+
+    async function searchRepositoriesStarreds(search? : string) {
+        if (!search || search.length == 0) {
+            return loadStarredRepositories()
+        }
+        setStarreds(starredState => starredState.filter(starred => starred.name.match(search)))
+    }
+
+    async function loadRepositories() {
+        const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
+        const userRepositories = await Api.fetchRepositories()
+        setRepositories(userRepositories)
+    }
+
+    async function loadStarredRepositories() {
+        const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
+        const userStarredRepositories = await Api.fetchRepositories(true)
+        setStarreds(userStarredRepositories)
+    }
 
     async function loadProfile() {
         const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
-        const [userProfile, userRepositories, userRepositoriesStarred] = [
-            await Api.fetchUser(), 
-            await Api.fetchRepositories(), 
-            await Api.fetchRepositories(true)
-        ]
-        setUser        (userProfile)
-        setRepositories(userRepositories)
-        setStarreds    (userRepositoriesStarred)
+        const userProfile =  await Api.fetchUser()
+        setUser(userProfile)
+        loadRepositories()
+        loadStarredRepositories()
         // setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
         //     setLoadingProfile(loadState => {
         //         document.title = 'Github Profile | ' + userProfile.name
@@ -46,7 +68,9 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         <ContextUserGithub.Provider value={{
             user, 
             repositories,
-            starreds
+            starreds,
+            searchRepositories,
+            searchRepositoriesStarreds
         }}>
             { loadingProfile ? <Loading message={'Aguarde, carregando perfil de ('+ USER_PROFILE_TO_INTERFACE + ')...'} /> : children }
         </ContextUserGithub.Provider>

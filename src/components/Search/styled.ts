@@ -15,7 +15,6 @@ export const Container = styled.form`
     padding: 0.5625rem;
 `
 
-
 export const SearchButton = styled.button`
     background: none;
     border: none;

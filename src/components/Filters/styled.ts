@@ -16,7 +16,7 @@ export const Filter = styled(FiltersMenu.Menu)``
 export const FilterButton = styled(FiltersMenu.Trigger).attrs(props => ({
     children: window.matchMedia('(max-width: 480px)').matches 
                 ? React.createElement(Funnel, {size: 20, weight:"fill"})
-                : [React.createElement(CaretDown, {size:20, weight:"bold"}), 'Filters']
+                : [React.createElement(CaretDown, {size:20, weight:"bold", key: 1}), 'Filters']
 } as FiltersMenu.MenubarTriggerProps))`
     all: unset;
     padding: 0.59375rem 1rem;

@@ -22,7 +22,7 @@ export const HeaderTabIndicators = styled(List)`
 
     /** Mobile */
     @media screen and (max-width: 480px) {
-        gap:0;
+        gap: 0;
         justify-content: space-between;
     }
 `

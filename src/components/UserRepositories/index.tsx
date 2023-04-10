@@ -6,24 +6,26 @@ import Search from '../Search'
 import Repository from '../Repository'
 import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
 import Filters from '../Filters'
+import { useState } from 'react'
 
-enum Tabs {
+export enum Tabs {
     TAB_REPOSITORIES = 'TAB_REPOSITORIES',
     TAB_STARRED      = 'TAB_STARRED'
 }
 
 export default function UserRepositories() {
     const [ repositories, starreds ] = useRepositories(true)
+    const [activeTab, setActiveTab] = useState<Tabs>(Tabs.TAB_REPOSITORIES)
 
     return (
-        <Styled.Container orientation="horizontal" defaultValue={Tabs.TAB_REPOSITORIES}>
+        <Styled.Container orientation="horizontal" defaultValue={activeTab} value={activeTab} onValueChange={tab => setActiveTab(tab as Tabs)}>
             <Styled.HeaderTab>
                 <Styled.HeaderTabIndicators>
                     <Styled.TabIndicator counter={repositories.length} value={Tabs.TAB_REPOSITORIES}> <BookBookmark size={24} weight="bold"/> Repositories </Styled.TabIndicator>
                     <Styled.TabIndicator counter={starreds.length} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
-                    <Search />
+                    <Search tab={activeTab} />
                     <Filters />
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>

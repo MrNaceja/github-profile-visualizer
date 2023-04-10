@@ -1,9 +1,9 @@
 export interface IRepository {
     /** Identificador único do Repositório */
     id: string,
-    /** Nome do Repositório */
+    /** Usuário do Repositório */
     owner: string,
-    /** Workspace do Repositório */
+    /** Nome do Repositório */
     name: string,
     /** URL para acesso ao Repositório no github */
     urlGithub: string,
