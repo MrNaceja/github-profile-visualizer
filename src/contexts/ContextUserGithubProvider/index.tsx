@@ -48,12 +48,12 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         setUser(userProfile)
         loadRepositories()
         loadStarredRepositories()
-        // setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
-        //     setLoadingProfile(loadState => {
-        //         document.title = 'Github Profile | ' + userProfile.name
-        //         return false
-        //     })
-        // }, 3000)
+        setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
+            setLoadingProfile(loadState => {
+                document.title = 'Github Profile | ' + userProfile.name
+                return false
+            })
+        }, 3000)
         // setLoadingProfile(loadState => {
         //     document.title = 'Github Profile | ' + userProfile.name
         //     return false
