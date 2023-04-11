@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import * as Collapsible from '@radix-ui/react-collapsible'
+import { AnimPopUp } from "../../styles/Animations";
 
 export const Container = styled.aside`
     display: flex;
@@ -72,6 +73,9 @@ export const InfoLink = styled.a`
     align-items: center;
     gap:10px;
     cursor: pointer;
+    :hover {
+        color: ${props => props.theme.PRIMARY_800};
+    }
 `
 
 export const InfoUser = styled.div`
@@ -90,6 +94,7 @@ export const Avatar = styled.div`
     width:max-content;
     height:max-content;
     position: relative;
+    animation: ${AnimPopUp} 1s;
 
     img {
         height: 150px;
@@ -110,7 +115,7 @@ export const Avatar = styled.div`
         right:0;
         bottom:0;
         padding: 0.46875rem;
-        box-shadow: 0 5px 16px ${props => props.theme.GRAY_200};
+        box-shadow: 0 5px 10px ${props => props.theme.GRAY_200};
         box-sizing: border-box;
     }
 

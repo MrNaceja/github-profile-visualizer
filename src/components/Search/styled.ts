@@ -6,6 +6,13 @@ export const SearchInput = styled.input`
     flex:1;
 `
 
+export const SearchButton = styled.button`
+    background: none;
+    border: none;
+    cursor:pointer;
+    color: ${props => props.theme.GRAY_500};
+`
+
 export const Container = styled.form`
     flex:1;
     border-bottom: 1px solid ${props => props.theme.GRAY_300};
@@ -13,11 +20,12 @@ export const Container = styled.form`
     gap: 1rem;
     display: flex;
     padding: 0.5625rem;
-`
 
-export const SearchButton = styled.button`
-    background: none;
-    border: none;
-    cursor:pointer;
-    color: ${props => props.theme.GRAY_500};
+    :has(${SearchInput}:focus) {
+        border-bottom: 1px solid ${props => props.theme.PRIMARY_500};
+        ${SearchButton} {
+            color: ${props => props.theme.PRIMARY_500};
+        }
+    }
+
 `

@@ -4,6 +4,10 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
+    transition: .3s;
+    :hover {
+        transform: translateX(1rem);
+    }
 `
 
 export const Title = styled.h1`

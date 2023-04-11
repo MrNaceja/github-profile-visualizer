@@ -1,5 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {ReactComponent as GitHubAvatarLogo} from '../../assets/github-mark/github-mark.svg'
+import { AnimPopUpOpacity } from "../../styles/Animations";
 
 export const Container = styled.section`
     height: 100vh;
@@ -11,25 +12,13 @@ export const Container = styled.section`
     padding: 1rem;
 `
 
-const AnimExpandLogo = keyframes`
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-`
-
 export const LoadingLogo = styled(GitHubAvatarLogo)`
     fill: ${props => props.theme.GRAY_800};
-    -webkit-animation: ${AnimExpandLogo} 2s infinite alternate;
-    -moz-animation: ${AnimExpandLogo} 2s infinite alternate;
-    -o-animation: ${AnimExpandLogo} 2s infinite alternate;
-    -ms-animation: ${AnimExpandLogo} 2s infinite alternate;
-    animation: ${AnimExpandLogo} 2s infinite alternate;
+    -webkit-animation: ${AnimPopUpOpacity} 2s infinite alternate;
+    -moz-animation: ${AnimPopUpOpacity} 2s infinite alternate;
+    -o-animation: ${AnimPopUpOpacity} 2s infinite alternate;
+    -ms-animation: ${AnimPopUpOpacity} 2s infinite alternate;
+    animation: ${AnimPopUpOpacity} 2s infinite alternate;
 `
 
 export const LoadingMessage = styled.h1`

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Root, List, Trigger, Content } from '@radix-ui/react-tabs'
+import { AnimSlideUp } from "../../styles/Animations";
 
 export const Container = styled(Root)`
     gap: 2.5rem;
@@ -96,6 +97,8 @@ export const TabView = styled(Content)`
     justify-content: flex-start;
     gap: 3.125rem;
     flex: 1;
+    animation: ${AnimSlideUp} 1s;
+    padding-bottom: 1rem;
 
     &:not([data-state='active']) {
         display: none;
