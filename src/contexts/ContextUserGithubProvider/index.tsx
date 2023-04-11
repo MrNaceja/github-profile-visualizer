@@ -8,7 +8,7 @@ import Loading from "../../components/Loading";
 export const ContextUserGithub = createContext({} as IContextUserGithubValues)
 
 /** Mudar aqui para ver outros perfis */
-const USER_PROFILE_TO_INTERFACE = 'gabrielcordeiro';
+const USER_PROFILE_TO_INTERFACE = 'MrNaceja';
 
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
     const [user, setUser]                     = useState<IUser>({} as IUser)
@@ -48,12 +48,12 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         setUser(userProfile)
         loadRepositories()
         loadStarredRepositories()
-        setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
-            setLoadingProfile(loadState => {
-                document.title = 'Github Profile | ' + userProfile.name
-                return false
-            })
-        }, 3000)
+        // setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
+        //     setLoadingProfile(loadState => {
+        //         document.title = 'Github Profile | ' + userProfile.name
+        //         return false
+        //     })
+        // }, 3000)
         // setLoadingProfile(loadState => {
         //     document.title = 'Github Profile | ' + userProfile.name
         //     return false
