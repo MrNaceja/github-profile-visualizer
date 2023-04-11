@@ -16,6 +16,12 @@ export enum Tabs {
 export default function UserRepositories() {
     const [ repositories, starreds]  = useRepositories()
     const [ activeTab, setActiveTab ] = useState<Tabs>(Tabs.TAB_REPOSITORIES)
+    const [ filteredLanguages, setFilteredLanguages] = useState<string[]>([])
+
+    const filterAllLanguages = filteredLanguages.length == 0
+
+    const starredsFiltered     = starreds.filter(starred => filterAllLanguages || filteredLanguages.includes(starred.predominantLanguage))
+    const repositoriesFiltered = repositories.filter(repos => filterAllLanguages || filteredLanguages.includes(repos.predominantLanguage))
 
     return (
         <Styled.Container orientation="horizontal" defaultValue={activeTab} value={activeTab} onValueChange={tab => setActiveTab(tab as Tabs)}>
@@ -26,19 +32,22 @@ export default function UserRepositories() {
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
                     <Search tab={activeTab} />
-                    <Filters />
+                    <Filters 
+                        languagesToFilter={filteredLanguages}
+                        setLanguagesToFilter={setFilteredLanguages}
+                    />
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
                 {
-                    repositories.map(rep => (
+                    repositoriesFiltered.map(rep => (
                         <Repository repository={rep} key={rep.id}/>
                     ))
                 }
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
                 {
-                    starreds.map(repStarred => (
+                    starredsFiltered.map(repStarred => (
                         <Repository repository={repStarred} key={repStarred.id}/>
                     ))
                 }

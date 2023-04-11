@@ -1,14 +1,22 @@
-import { CaretDown, CheckSquare, Square } from 'phosphor-react';
-
 import * as Styled from './styled'
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
+import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories';
 
-export default function Filters() {
+interface IFiltersProps {
+    setLanguagesToFilter: Dispatch<SetStateAction<string[]>>
+    languagesToFilter: string[]
+}
 
-    const languages = ['JS', 'React', 'Java', 'PHP']
+export default function Filters({ languagesToFilter, setLanguagesToFilter} : IFiltersProps) {
+    const [repositories, starreds] = useRepositories()
+    const predominantLanguages = [...new Set(
+        [
+            ...repositories.map(rep => rep.predominantLanguage),
+            ...starreds.map(starred => starred.predominantLanguage)
+        ]
+    )]
     const types = ['All', 'Sources', 'Forks', 'Archived', 'Mirrors']
 
-    const [languagesToFilter, setLanguagesToFilter] = useState(['Java'])
     const [typesToFilter, setTypesToFilter] = useState(['All'])
 
     return (
@@ -19,7 +27,7 @@ export default function Filters() {
                     <Styled.FilterModal>
                         <Styled.FilterSelectItemLabelGroup>Languages</Styled.FilterSelectItemLabelGroup>
                     {
-                        languages.map(lang => {
+                        predominantLanguages.map(lang => {
                             const isCheckedToFilter = languagesToFilter.includes(lang)
                             return (
                                 <Styled.FilterSelectItem 

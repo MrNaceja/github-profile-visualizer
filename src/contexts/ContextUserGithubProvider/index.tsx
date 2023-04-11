@@ -20,14 +20,14 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         if (!search || search.length == 0) {
             return loadRepositories()
         }
-        setRepositories(reposState => reposState.filter(rep => rep.name.match(search)))
+        setRepositories(reposState => reposState.filter(rep => rep.name.toLowerCase().match(search.toLowerCase())))
     }
 
     async function searchRepositoriesStarreds(search? : string) {
         if (!search || search.length == 0) {
             return loadStarredRepositories()
         }
-        setStarreds(starredState => starredState.filter(starred => starred.name.match(search)))
+        setStarreds(starredState => starredState.filter(starred => starred.name.toLowerCase().match(search.toLowerCase())))
     }
 
     async function loadRepositories() {
@@ -72,7 +72,10 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
             searchRepositories,
             searchRepositoriesStarreds
         }}>
-            { loadingProfile ? <Loading message={'Aguarde, carregando perfil de ('+ USER_PROFILE_TO_INTERFACE + ')...'} /> : children }
+            { 
+            loadingProfile 
+            ? <Loading message={'Aguarde, carregando perfil de ('+ USER_PROFILE_TO_INTERFACE + ')...'} /> 
+            : children }
         </ContextUserGithub.Provider>
     )
 }
