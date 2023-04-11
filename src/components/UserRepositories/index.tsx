@@ -1,18 +1,22 @@
+import { useState }           from 'react'
+import useRepositories        from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
+import * as Styled            from './styled'
 import { BookBookmark, Star } from 'phosphor-react'
+import Search                 from '../Search'
+import Repository             from '../Repository'
+import Filters, { IFilter }   from '../Filters'
 
-import * as Styled from './styled'
-
-import Search from '../Search'
-import Repository from '../Repository'
-import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
-import Filters, { IFilter } from '../Filters'
-import { useState } from 'react'
-
+/**
+ * Abas de Repositório.
+ */
 export enum Tabs {
     TAB_REPOSITORIES = 'TAB_REPOSITORIES',
     TAB_STARRED      = 'TAB_STARRED'
 }
 
+/**
+ * Componente de Visualização dos Repositórios do Usuário.
+ */
 export default function UserRepositories() {
     const [ repositories, starreds]                  = useRepositories()
     const [ activeTab, setActiveTab ]                = useState<Tabs>(Tabs.TAB_REPOSITORIES)

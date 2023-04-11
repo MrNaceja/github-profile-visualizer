@@ -1,10 +1,14 @@
-import * as Styled from './styled'
 import { Dispatch, SetStateAction } from 'react';
+import * as Styled                  from './styled'
 
 interface IFiltersProps {
+    /** Filtros para serem renderizados */
     filters: IFilter[]
 }
 
+/**
+ * Modelo de filtro para ser renderizado e controlado.
+ */
 export interface IFilter {
     group: string,
     values: string[],
@@ -12,6 +16,9 @@ export interface IFilter {
     setValuesState: Dispatch<SetStateAction<string[]>>
 }
 
+/**
+ * Componente para controle de Filtros.
+ */
 export default function Filters({ filters} : IFiltersProps) {
     return (
         <Styled.Container>

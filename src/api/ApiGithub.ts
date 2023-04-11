@@ -1,7 +1,10 @@
-import { IRepository } from "../contexts/ContextUserGithubProvider/Interfaces/repository"
-import { IUser } from "../contexts/ContextUserGithubProvider/Interfaces/user"
+import { IRepository }     from "../contexts/ContextUserGithubProvider/Interfaces/repository"
+import { IUser }           from "../contexts/ContextUserGithubProvider/Interfaces/user"
 import randomNumberInRange from '../utils/randomNumberInRange';
 
+/**
+ * Enumerados para as rotas da api referentes a busca dos dados do usuário e seus repositórios.
+ */
 enum ApiUrl {
     USER_ENDPOINT                 = 'USER',
     GET_USER                      = 'https://api.github.com/users/' + USER_ENDPOINT,
@@ -9,11 +12,19 @@ enum ApiUrl {
     GET_USER_REPOSITORIES_STARRED = 'https://api.github.com/users/' + USER_ENDPOINT +'/starred'
 }
 
+/**
+ * Ações de busca na API.
+ */
 interface IApiGitHubActions {
-    fetchUser:         () => Promise<IUser>,
+    /** Busca o Usuário do Github*/
+    fetchUser: () => Promise<IUser>,
+    /**BUsca os Repositórios do Usuário do Github */
     fetchRepositories: (bStarred? : boolean) => Promise<IRepository[]>,
 }
 
+/**
+ * API para busca dos dados do Github.
+ */
 export default function ApiGithub(user : string) : IApiGitHubActions {
     
     return {

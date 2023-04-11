@@ -1,8 +1,15 @@
-import * as Styled from './styled'
-
+import * as Styled  from './styled'
 import LogoMagazord from '../../assets/logo-magazord.png'
 
-export default function Loading({ message } : { message: string }) {
+interface ILoadingProps {
+    /** Mensagem de carregamento */
+    message: string
+}
+
+/**
+ * Componente de tela de carregamento.
+ */
+export default function Loading({ message } : ILoadingProps) {
     return (
         <Styled.Container>
             <Styled.LoadingHeader>

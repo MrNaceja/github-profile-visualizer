@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
-import * as FiltersMenu from "@radix-ui/react-menubar";
+import React                                                 from "react";
+import styled, { css }                                       from "styled-components";
+import * as FiltersMenu                                      from "@radix-ui/react-menubar";
 import { CaretDown, CheckSquare, Funnel, IconProps, Square } from "phosphor-react";
-import React from "react";
 
 export const Container = styled(FiltersMenu.Root)`
     display:flex;
@@ -11,7 +11,6 @@ export const Container = styled(FiltersMenu.Root)`
 `
 
 export const Filter = styled(FiltersMenu.Menu)``
-
 
 export const FilterButton = styled(FiltersMenu.Trigger).attrs(props => ({
     children: window.matchMedia('(max-width: 480px)').matches 

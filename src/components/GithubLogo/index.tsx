@@ -1,10 +1,12 @@
-import * as Styled from './styled'
-
-import GitHubLogo       from '../../assets/github-mark/GitHub_Logo_White.png'
+import { useTheme }                         from 'styled-components'
+import useUser                              from '../../contexts/ContextUserGithubProvider/hooks/useUser'
+import * as Styled                          from './styled'
 import {ReactComponent as GitHubAvatarLogo} from '../../assets/github-mark/github-mark-white.svg'
-import useUser from '../../contexts/ContextUserGithubProvider/hooks/useUser'
-import { useTheme } from 'styled-components'
+import GitHubLogo                           from '../../assets/github-mark/GitHub_Logo_White.png'
 
+/**
+ * Componente de Logotipos do Github, presente no cabeçalho da aplicação.
+ */
 export default function GithubLogo() {
     const { name : userName } = useUser()
     const theme = useTheme()

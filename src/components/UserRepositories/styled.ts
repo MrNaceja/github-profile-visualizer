@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled, { css }                  from "styled-components";
 import { Root, List, Trigger, Content } from '@radix-ui/react-tabs'
-import { AnimSlideUp } from "../../styles/Animations";
+import { AnimSlideUp }                  from "../../styles/Animations";
 
 export const Container = styled(Root)`
     gap: 2.5rem;

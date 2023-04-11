@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import * as Collapsible from '@radix-ui/react-collapsible'
-import { AnimPopUp } from "../../styles/Animations";
+import * as Collapsible      from '@radix-ui/react-collapsible'
+import { AnimPopUp }         from "../../styles/Animations";
 
 export const Container = styled.aside`
     display: flex;

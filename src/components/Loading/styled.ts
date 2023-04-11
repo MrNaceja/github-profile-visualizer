@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled                               from "styled-components";
 import {ReactComponent as GitHubAvatarLogo} from '../../assets/github-mark/github-mark.svg'
-import { AnimPopUpOpacity } from "../../styles/Animations";
+import { AnimPopUpOpacity }                 from "../../styles/Animations";
 
 export const Container = styled.section`
     height: 100vh;

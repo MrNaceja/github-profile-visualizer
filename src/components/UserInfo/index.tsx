@@ -1,7 +1,10 @@
+import useUser                                      from '../../contexts/ContextUserGithubProvider/hooks/useUser'
+import * as Styled                                  from './styled'
 import { Buildings, CaretDown, GithubLogo, MapPin } from 'phosphor-react'
-import * as Styled from './styled'
-import useUser from '../../contexts/ContextUserGithubProvider/hooks/useUser'
 
+/**
+ * Componente de Visualização das informações do usuário.
+ */
 export default function UserInfo() {
     const user = useUser()
     return (

@@ -1,5 +1,5 @@
-import { GitBranch } from 'phosphor-react'
-import * as Styled from './styled'
+import * as Styled     from './styled'
+import { GitBranch }   from 'phosphor-react'
 import { IRepository } from '../../contexts/ContextUserGithubProvider/Interfaces/repository'
 
 interface IRepositoryProps {
@@ -7,6 +7,9 @@ interface IRepositoryProps {
     repository: IRepository
 }
 
+/**
+ * Componente de informações do repositório.
+ */
 export default function Repository({ repository } : IRepositoryProps) {
     return (
         <Styled.Container>

@@ -1,5 +1,5 @@
-import { ReactNode } from "react"
-import { IUser } from "./user"
+import { ReactNode }   from "react"
+import { IUser }       from "./user"
 import { IRepository } from "./repository"
 
 export interface IContextUserGithubValues {

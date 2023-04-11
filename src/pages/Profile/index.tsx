@@ -1,9 +1,11 @@
-import * as Styled from './styled'
-
-import UserInfo      from '../../components/UserInfo'
+import * as Styled      from './styled'
+import GithubLogo       from '../../components/GithubLogo'
+import UserInfo         from '../../components/UserInfo'
 import UserRepositories from '../../components/UserRepositories'
-import GithubLogo    from '../../components/GithubLogo'
 
+/**
+ * Página Perfil da aplicação.
+ */
 export default function Profile() {
     return (
       <Styled.Container>
