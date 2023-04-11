@@ -1,71 +1,51 @@
 import * as Styled from './styled'
-import { Dispatch, SetStateAction, useState } from 'react';
-import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories';
+import { Dispatch, SetStateAction } from 'react';
 
 interface IFiltersProps {
-    setLanguagesToFilter: Dispatch<SetStateAction<string[]>>
-    languagesToFilter: string[]
+    filters: IFilter[]
 }
 
-export default function Filters({ languagesToFilter, setLanguagesToFilter} : IFiltersProps) {
-    const [repositories, starreds] = useRepositories()
-    const predominantLanguages = [...new Set(
-        [
-            ...repositories.map(rep => rep.predominantLanguage),
-            ...starreds.map(starred => starred.predominantLanguage)
-        ]
-    )]
-    const types = ['All', 'Sources', 'Forks', 'Archived', 'Mirrors']
+export interface IFilter {
+    group: string,
+    values: string[],
+    valuesState: string[],
+    setValuesState: Dispatch<SetStateAction<string[]>>
+}
 
-    const [typesToFilter, setTypesToFilter] = useState(['All'])
-
+export default function Filters({ filters} : IFiltersProps) {
     return (
         <Styled.Container>
             <Styled.Filter>
                 <Styled.FilterButton />
                 <Styled.FilterSelect>
                     <Styled.FilterModal>
-                        <Styled.FilterSelectItemLabelGroup>Languages</Styled.FilterSelectItemLabelGroup>
-                    {
-                        predominantLanguages.map(lang => {
-                            const isCheckedToFilter = languagesToFilter.includes(lang)
-                            return (
-                                <Styled.FilterSelectItem 
-                                    key={lang}
-                                    checked={isCheckedToFilter}
-                                    onCheckedChange={(check) => {
-                                        check 
-                                        ? setLanguagesToFilter(curr => [...curr, lang])
-                                        : setLanguagesToFilter(curr => [...curr.filter(langCurr => langCurr != lang)])
-                                    }}
-                                >
-                                { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
-                                { lang }
-                                </Styled.FilterSelectItem>
-                            )
-                        })
-                    }   
-                    <Styled.FilterSelectItemSeparator />
-                    <Styled.FilterSelectItemLabelGroup>Types</Styled.FilterSelectItemLabelGroup>
-                    {
-                        types.map(type => {
-                            const isCheckedToFilter = typesToFilter.includes(type)
-                            return (
-                                <Styled.FilterSelectItem 
-                                    key={type}
-                                    checked={isCheckedToFilter}
-                                    onCheckedChange={(check) => {
-                                        check 
-                                        ? setTypesToFilter(curr => [...curr, type])
-                                        : setTypesToFilter(curr => [...curr.filter(typeCurr => typeCurr != type)])
-                                    }}
-                                >
-                                { isCheckedToFilter ? <Styled.IconCheck/> : <Styled.IconUncheck/> }
-                                { type }
-                                </Styled.FilterSelectItem>
-                            )
-                        })
-                    }
+                        {
+                            filters.map(({ group, values, valuesState, setValuesState } : IFilter, index) => (
+                                <div key={`${group}_group_${index}`}>
+                                    <Styled.FilterSelectItemLabelGroup key={group}>{group}</Styled.FilterSelectItemLabelGroup>
+                                    {
+                                        values.map(value => {
+                                            const isCheckedValue = valuesState.includes(value)
+                                            return (
+                                                <Styled.FilterSelectItem 
+                                                    key={group + '_' + value + '_item'}
+                                                    checked={isCheckedValue}
+                                                    onCheckedChange={(check) => {
+                                                    check 
+                                                    ? setValuesState(valueState => [...valueState, value])
+                                                    : setValuesState(valueState => [...valueState.filter(valueInState => valueInState != value)])
+                                                }}
+                                            >
+                                            { isCheckedValue ? <Styled.IconCheck /> : <Styled.IconUncheck /> }
+                                            { value }
+                                            </Styled.FilterSelectItem>
+                                            )
+                                        })
+                                    }
+                                    { (filters.length > 1 && index < filters.length - 1) && <Styled.FilterSelectItemSeparator key={group + '_separator'}/>}
+                                </div>
+                            ))
+                        }
                     </Styled.FilterModal>
                 </Styled.FilterSelect>
             </Styled.Filter>

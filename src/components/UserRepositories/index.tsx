@@ -5,7 +5,7 @@ import * as Styled from './styled'
 import Search from '../Search'
 import Repository from '../Repository'
 import useRepositories from '../../contexts/ContextUserGithubProvider/hooks/useRepositories'
-import Filters from '../Filters'
+import Filters, { IFilter } from '../Filters'
 import { useState } from 'react'
 
 export enum Tabs {
@@ -14,9 +14,32 @@ export enum Tabs {
 }
 
 export default function UserRepositories() {
-    const [ repositories, starreds]  = useRepositories()
-    const [ activeTab, setActiveTab ] = useState<Tabs>(Tabs.TAB_REPOSITORIES)
+    const [ repositories, starreds]                  = useRepositories()
+    const [ activeTab, setActiveTab ]                = useState<Tabs>(Tabs.TAB_REPOSITORIES)
     const [ filteredLanguages, setFilteredLanguages] = useState<string[]>([])
+    const [ filteredTypes, setFilteredTypes]         = useState<string[]>(['All'])
+
+    const predominantLanguages = [...new Set(
+        [
+            ...repositories.map(rep => rep.predominantLanguage),
+            ...starreds.map(starred => starred.predominantLanguage)
+        ]
+    )]
+
+    const filters : IFilter[] = [
+        {
+            group: 'Languages',
+            values: predominantLanguages,
+            valuesState: filteredLanguages,
+            setValuesState: setFilteredLanguages
+        },
+        {
+            group: 'Types',
+            values: ['All', 'Sources', 'Forks', 'Archived', 'Mirrors'],
+            valuesState: filteredTypes,
+            setValuesState: setFilteredTypes
+        }
+    ]
 
     const filterAllLanguages = filteredLanguages.length == 0
 
@@ -32,10 +55,7 @@ export default function UserRepositories() {
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
                     <Search tab={activeTab} />
-                    <Filters 
-                        languagesToFilter={filteredLanguages}
-                        setLanguagesToFilter={setFilteredLanguages}
-                    />
+                    <Filters filters={filters}/>
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
