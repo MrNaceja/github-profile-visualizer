@@ -63,6 +63,7 @@ export default function UserRepositories() {
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
+                <Styled.TabViewHint><strong>{repositoriesFiltered.length}</strong> Repositórios encontrados</Styled.TabViewHint>
                 {
                     repositoriesFiltered.map(rep => (
                         <Repository repository={rep} key={rep.id}/>
@@ -70,6 +71,7 @@ export default function UserRepositories() {
                 }
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
+                <Styled.TabViewHint><strong>{starredsFiltered.length}</strong> Repositórios favoritados encontrados</Styled.TabViewHint>
                 {
                     starredsFiltered.map(repStarred => (
                         <Repository repository={repStarred} key={repStarred.id}/>

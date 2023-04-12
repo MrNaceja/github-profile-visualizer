@@ -50,6 +50,7 @@ export const FilterModal = styled(FiltersMenu.Content).attrs(props => ({
 `
 export const FilterSelectItem = styled(FiltersMenu.CheckboxItem)`
     display:flex;
+    align-items: center;
     gap: 1rem;
     padding-left: 5px;
     padding: 5px;
@@ -73,11 +74,12 @@ export const FilterSelectItemLabelGroup = styled(FiltersMenu.Label)`
     text-transform: uppercase;
     font-size: .8rem;
 `
-interface Props {
+
+interface IFilterSelectItemIconProps {
     check: boolean;
 }
-export const FilterSelectItemIcon = styled.span.attrs<Props>(({ check, theme }) => ({
+export const FilterSelectItemIcon = styled.span.attrs<IFilterSelectItemIconProps>(({ check, theme }) => ({
     children: check 
         ? React.createElement(CheckSquare, {size: 20, weight: "fill", color: theme.PRIMARY_500} as IconProps)
         : React.createElement(Square     , {size: 20, weight: "bold", color: theme.GRAY_300} as IconProps)
-}))<Props>``
+}))<IFilterSelectItemIconProps>`display: grid; place-items: center;`

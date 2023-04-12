@@ -1,6 +1,6 @@
 import styled, { css }                  from "styled-components";
 import { Root, List, Trigger, Content } from '@radix-ui/react-tabs'
-import { AnimSlideUp }                  from "../../styles/Animations";
+import { AnimSlideDown, AnimSlideUp }   from "../../styles/Animations";
 
 export const Container = styled(Root)`
     gap: 2.5rem;
@@ -99,8 +99,14 @@ export const TabView = styled(Content)`
     flex: 1;
     animation: ${AnimSlideUp} 1s;
     padding-bottom: 1rem;
-
+    overflow: hidden;
     &:not([data-state='active']) {
         display: none;
     }
+`
+
+export const TabViewHint = styled.h5`
+    color: ${props => props.theme.GRAY_300};
+    font-weight: 400;
+    animation: ${AnimSlideDown} .2s linear 1s both;
 `
