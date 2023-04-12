@@ -8,6 +8,8 @@
 Este repositório tem como fim testar os candidatos para vaga de front-end developer na empresa [Magazord](https://magazord.com.br).
 > Para esta vaga buscamos alguém apaixonado por HTML, CSS, JavaScript e atento aos detalhes!
 
+__________
+
 # Desenvolvimento
 
 #### Ferramentas utilizadas
@@ -19,8 +21,11 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
 > Utilizado estruturação de pastas prezando componentização organizada relevantes a cada contexto
 > Realizado documentação nos programas
 
+___________
+
 #### Resumo do que foi feito
-1. Recriado interface conforme [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
+
+1 Recriado interface conforme [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
     1.1. Desenvolvido algumas adaptações na interface
     1.2. Desenvolvido responsividade
     1.3. Adicionado novas features
@@ -35,7 +40,10 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
     3.3. Desenvolvido animações
     3.4. Hint na visualização dos repositórios apresentando a quantidade dos mesmos
 
+________
+
 ## Instruções Básicas
+
 1. Rodar o projeto
     1.1. Baixar/clonar projeto do github
     1.2. Rodar comando _npm install_ para instalar as dependências necessárias
@@ -43,6 +51,9 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
 O projeto estará rodando, note que mesmo estará com meu perfil configurado para busca das informações.
 Para ver outro perfil refletido na interface, acesse _[Alterar Usuário do perfil](src/contexts/ContextUserGithubProvider/Interfaces/user.ts)_ e mude o valor da constante USER_PROFILE_TO_INTERFACE (seguindo a orientação presente na mesma)
 
+___________
+
 ## Nota de desenvolvimento
+
 Os Filtros de Tipo (Type) só estão presentes na interface mas não possuem comportamento, apenas os de linguagens possui.
 
