@@ -20,8 +20,6 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
 >> Utilizado estruturação de pastas prezando componentização organizada relevantes a cada contexto
 >> Realizado documentação nos programas
 
-___________
-
 ### **Resumo do que foi feito**
 
 > * **Recriado interface conforme** [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
