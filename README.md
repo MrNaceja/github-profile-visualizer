@@ -26,7 +26,7 @@ ___________
 #### Resumo do que foi feito
 
 1 Recriado interface conforme [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
-    1.1. Desenvolvido algumas adaptações na interface
+ 1.1 Desenvolvido algumas adaptações na interface
     1.2. Desenvolvido responsividade
     1.3. Adicionado novas features
 2. Desafio opcional
