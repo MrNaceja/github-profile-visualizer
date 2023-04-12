@@ -1,3 +1,9 @@
+/**
+ * @tutorial Mudar aqui para ver outros perfis.
+ * Certifique-se de informar corretamente o nome de usuário do github para ver seus dados refletidos na interface (não há tratammento de erro).
+ */
+export const USER_PROFILE_TO_INTERFACE = 'MrNaceja';
+
 export interface IUser {
     /** Nome de Usuário */
     name: string,

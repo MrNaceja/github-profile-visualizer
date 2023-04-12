@@ -8,41 +8,30 @@
 Este repositório tem como fim testar os candidatos para vaga de front-end developer na empresa [Magazord](https://magazord.com.br).
 > Para esta vaga buscamos alguém apaixonado por HTML, CSS, JavaScript e atento aos detalhes!
 
+# Desenvolvimento
+#### Ferramentas utilizadas
+> * Vite (Arquitetura da aplicação)
+> * React JS (Framework de desenvolvimento)
+> * Typescript (Linguagem de desenvolvimento)
+> * Styled-Components (Biblioteca de estilização)
+> * Radix UI (Biblioteca de componentes pré contruídos)
+#### Resumo do que foi feito
+> **1. Recriado interface conforme [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)**
+> 1.1. Desenvolvido algumas adaptações na interface
+> 1.2. Desenvolvido responsividade
+> 1.3. Adicionado novas features
+> **2. Desafio opcional**
+> 2.1. Criado API para busca dos dados do usuário dinamicamente conforme o mesmo fornecido pelo contexto
+> 2.2 Desenvolvido sistema de pesquisa através do componente de barra de pesquisa
+> 2.3 Desenvolvido sistema de filtragem através do componente de filtros
+> 2.4 Ao clicar no repositório será redirecionado para o repositório no github
 
 ## Instruções Básicas
-1. Faça um fork deste repositório
-2. Implemente o HTML e CSS de forma que fique fiel ao layout
-3. Atenção com espaçamentos e tamanhos de fonte
-4. Qualquer contribuição para melhorar o resultado será bem vinda!
-5. O usuário do GitHub utilizado no exemplo pode ser qualquer um de sua escolha
-6. Ao finalizar, atualize o README.md no seu repositório com as instruções para instalar e executar sua entrega
-
-## Desafio (opcional, porém será um bônus), a página deve:
-1. Carregar os dados de forma dinâmica utilizando a [API do GitHub](https://developer.github.com/v3/)
-2. Carregar os repositórios do usuário inicialmente
-3. Carregar os favoritos do usuário ao acessar a tab **Starred**
-4. Fazer uma busca ao digitar e fazer o submit com "Enter"
-5. Ao clicar em um repositório trazer as informações deles, como acontece nesse [neste exemplo](https://github-explorer.gabrielcordeiro.dev/repository/facebook/react)
-
-## O que esperamos no teste para a vaga de front-end
-* HTML Semântico
-* CSS de fácil leitura e reutilização
-* Uso de pré-processadores CSS como Sass, Less ou Stylus
-
-## O que esperamos no teste para a vaga de React
-* Typescript
-* HTML Semântico
-* Usar styled-components ou qualquer outra lib similar
-* Boa estruturação de pastas e componentes sendo possível a reutilização dos mesmos
-
-## Stack
-### Preferível
-* Utilizar Sass como pré-processador
-* Mobile First
-
-## Material
-Todo o layout está hospedado no Figma neste link: 
-https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1
-
+> 1. Rodar o projeto
+> 1.1. Baixar/clonar projeto do github
+> 1.2. Rodar comando _npm install_ para instalar as dependências necessárias
+> 1.3. Rodar npm run dev
+O projeto estará rodando, note que mesmo estará com meu perfil configurado para busca das informações.
+Para ver outro perfil, basta acessar _[aaa](src/contexts/ContextUserGithubProvider/Interfaces/user.ts)_ e mudar o valor da constante USER_PROFILE_TO_INTERFACE (seguindo a orientação presente na mesma)
 ## Envio do teste
 * Suba o repositório no seu Github e envie o link diretamente para o seu recrutador. Obs.: Não serão aceitos alterações após o envio

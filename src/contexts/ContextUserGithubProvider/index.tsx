@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState }                from "react";
 import ApiGithub                                             from "../../api/ApiGithub";
 import Loading                                               from "../../components/Loading";
-import { IUser }                                             from "./Interfaces/user";
+import { IUser, USER_PROFILE_TO_INTERFACE }                  from "./Interfaces/user";
 import { IRepository }                                       from "./Interfaces/repository";
 import { IContextUserGithubProps, IContextUserGithubValues } from "./Interfaces/context";
 
@@ -9,12 +9,6 @@ import { IContextUserGithubProps, IContextUserGithubValues } from "./Interfaces/
  * Contexto de Usuário.
  */
 export const ContextUserGithub = createContext({} as IContextUserGithubValues)
-
-/**
- * @tutorial Mudar aqui para ver outros perfis.
- * Certifique-se de informar corretamente o nome de usuário do github para ver seus dados refletidos na interface (não há tratammento de erro).
- */
-const USER_PROFILE_TO_INTERFACE = 'MrNaceja';
 
 /**
  * Provedor do contexto de usuário do github para a aplicação.
