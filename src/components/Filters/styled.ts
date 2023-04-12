@@ -73,6 +73,11 @@ export const FilterSelectItemLabelGroup = styled(FiltersMenu.Label)`
     text-transform: uppercase;
     font-size: .8rem;
 `
-
-export const IconCheck   = styled(CheckSquare).attrs(props => ({size: 20, weight: "fill", color: props.theme.PRIMARY_500} as IconProps))``
-export const IconUncheck = styled(Square).attrs(props => ({size: 20, weight: "bold", color: props.theme.GRAY_300} as IconProps))``
+interface Props {
+    check: boolean;
+}
+export const FilterSelectItemIcon = styled.span.attrs<Props>(({ check, theme }) => ({
+    children: check 
+        ? React.createElement(CheckSquare, {size: 20, weight: "fill", color: theme.PRIMARY_500} as IconProps)
+        : React.createElement(Square     , {size: 20, weight: "bold", color: theme.GRAY_300} as IconProps)
+}))<Props>``

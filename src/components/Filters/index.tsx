@@ -43,8 +43,8 @@ export default function Filters({ filters} : IFiltersProps) {
                                                     : setValuesState(valueState => [...valueState.filter(valueInState => valueInState != value)])
                                                 }}
                                             >
-                                            { isCheckedValue ? <Styled.IconCheck /> : <Styled.IconUncheck /> }
-                                            { value }
+                                                <Styled.FilterSelectItemIcon check={isCheckedValue} />
+                                                { value }
                                             </Styled.FilterSelectItem>
                                             )
                                         })
