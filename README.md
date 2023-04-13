@@ -38,6 +38,16 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
 >   *  API dinâmica
 >   *  Desenvolvido animações
 >   *  Hint na visualização dos repositórios apresentando a quantidade dos mesmos
+> ----
+> * **Recursos utilizados**
+>   * React State
+>   * React Reducer
+>   * React Context
+>   * React Hooks
+>   * API fetch
+>   * Styled Components
+>   * Biblioteca de componentes (Radix UI)
+
 
 ### **Considerações finais**
 
