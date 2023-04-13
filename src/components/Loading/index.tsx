@@ -18,7 +18,7 @@ export default function Loading({ message } : ILoadingProps) {
             </Styled.LoadingHeader>
             <Styled.LoadingFooter>
                 <Styled.LoadingFrom />
-                <Styled.LogoMagazord src={LogoMagazord}/>
+                <Styled.LogoMagazord src={LogoMagazord} alt="Logo Magazord"/>
             </Styled.LoadingFooter>
         </Styled.Container>
     )

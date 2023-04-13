@@ -1,9 +1,11 @@
-import { createContext, useEffect, useState }                from "react";
+import { createContext, useEffect, useReducer, useState }    from "react";
 import ApiGithub                                             from "../../api/ApiGithub";
 import Loading                                               from "../../components/Loading";
 import { IUser, USER_PROFILE_TO_INTERFACE }                  from "./Interfaces/user";
-import { IRepository }                                       from "./Interfaces/repository";
 import { IContextUserGithubProps, IContextUserGithubValues } from "./Interfaces/context";
+import { EActionsTypeRepositoriesState }                     from './Interfaces/reducerRepositories';
+import ReducerRepositories, { REPOSITORIES_INITIAL_STATE }   from "./reducers/ReducerRepositories/reducer";
+import { Tabs }                                              from "../../components/UserRepositories";
 
 /**
  * Contexto de Usuário.
@@ -15,18 +17,21 @@ export const ContextUserGithub = createContext({} as IContextUserGithubValues)
  * Mostra uma tela de carregamento enquanto o perfil não é carregado.
  */
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
-    const [user, setUser]                     = useState<IUser>({} as IUser)
-    const [repositories, setRepositories]     = useState<IRepository[]>([])
-    const [loadingProfile, setLoadingProfile] = useState(true)
+    const [user, setUser]                                = useState<IUser>({} as IUser)
+    const [repositoriesState, dispatchRepositoriesState] = useReducer(ReducerRepositories, REPOSITORIES_INITIAL_STATE)
+    const [loadingProfile, setLoadingProfile]            = useState(true)
 
     /**
      * Realiza uma pesquisa nos repositórios.
      */
-    async function searchRepositories(search? : string) {
+    async function searchRepositories(activeTab: Tabs, search? : string) {
         if (!search || search.length == 0) {
             return loadRepositories()
         }
-        setRepositories(reposState => reposState.filter(rep => rep.name.toLowerCase().match(search.toLowerCase())))
+        dispatchRepositoriesState({
+            type: EActionsTypeRepositoriesState.ACTION_SEARCH_REPOSITORIES,
+            payload: {search, activeTab }
+        })
     }
 
     /**
@@ -35,7 +40,10 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
     async function loadRepositories() {
         const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
         const userRepositories = await Api.fetchRepositories()
-        setRepositories(userRepositories)
+        dispatchRepositoriesState({
+            type: EActionsTypeRepositoriesState.ACTION_LOAD_REPOSITORIES,
+            payload: userRepositories
+        })
     }
 
     /**
@@ -61,7 +69,7 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
     return (
         <ContextUserGithub.Provider value={{
             user, 
-            repositories,
+            repositoriesState,
             searchRepositories,
         }}>
             { 

@@ -1,14 +1,15 @@
 import { ReactNode }   from "react"
 import { IUser }       from "./user"
-import { IRepository } from "./repository"
+import { IRepositoriesState } from "./reducerRepositories"
+import { Tabs } from "../../../components/UserRepositories"
 
 export interface IContextUserGithubValues {
     /** Usuário do perfil*/
     user: IUser,
-    /** Repositórios do usuário */
-    repositories: IRepository[],
+    /** Estados dos Repositórios do usuário */
+    repositoriesState: IRepositoriesState,
     /** Realiza a busca dos Repositórios pelo nome */
-    searchRepositories: (search? : string) => void
+    searchRepositories: (activeTab : Tabs, search? : string) => void
 }
 
 export interface IContextUserGithubProps {

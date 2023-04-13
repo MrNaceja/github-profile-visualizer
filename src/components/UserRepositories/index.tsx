@@ -19,12 +19,15 @@ export enum Tabs {
  * Componente de Visualização dos Repositórios do Usuário.
  */
 export default function UserRepositories() {
-    const allRepositories                            = useRepositories()
+    const { repositories, 
+            repositoriesStarreds : starreds, 
+            totalRepositories, 
+            totalRepositoriesStarred }               = useRepositories()
     const [ activeTab, setActiveTab ]                = useState<Tabs>(Tabs.TAB_REPOSITORIES)
     const [ filteredLanguages, setFilteredLanguages] = useState<string[]>([])
     const [ filteredTypes, setFilteredTypes]         = useState<string[]>(['All'])
 
-    const predominantLanguages = [...new Set([...allRepositories.map(rep => rep.predominantLanguage)])]
+    const predominantLanguages = [...new Set([...repositories.map(rep => rep.predominantLanguage)])]
 
     const filters : IFilter[] = [
         {
@@ -43,38 +46,38 @@ export default function UserRepositories() {
 
     const filterAllLanguages = filteredLanguages.length == 0
 
-    const repositories = allRepositories.reduce((repositories : IRepository[], repository) => {
-        if (!repository.starred) {
-            repositories.push(repository)
-            if (activeTab == Tabs.TAB_REPOSITORIES) {
-                if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
-                }
-            }
-        }
-        return repositories
-    }, [] as IRepository[])
-    const starreds = allRepositories.reduce(
-        (repositories : IRepository[], repository) => {
-            if (repository.starred) {
-                repositories.push(repository)
-                if (activeTab == Tabs.TAB_STARRED) {
-                    if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
-                    }
-                }
-            }   
-            return repositories
-        }, [] as IRepository[]
-    )
+    // const repositories = allRepositories.reduce((repositories : IRepository[], repository) => {
+    //     if (!repository.starred) {
+    //         repositories.push(repository)
+    //         if (activeTab == Tabs.TAB_REPOSITORIES) {
+    //             if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
+    //             }
+    //         }
+    //     }
+    //     return repositories
+    // }, [] as IRepository[])
+    // const starreds = allRepositories.reduce(
+    //     (repositories : IRepository[], repository) => {
+    //         if (repository.starred) {
+    //             repositories.push(repository)
+    //             if (activeTab == Tabs.TAB_STARRED) {
+    //                 if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
+    //                 }
+    //             }
+    //         }   
+    //         return repositories
+    //     }, [] as IRepository[]
+    // )
 
     return (
         <Styled.Container orientation="horizontal" defaultValue={activeTab} value={activeTab} onValueChange={tab => setActiveTab(tab as Tabs)}>
             <Styled.HeaderTab>
                 <Styled.HeaderTabIndicators>
-                    <Styled.TabIndicator counter={repositories.length} value={Tabs.TAB_REPOSITORIES}> <BookBookmark size={24} weight="bold"/> Repositories </Styled.TabIndicator>
-                    <Styled.TabIndicator counter={starreds.length} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
+                    <Styled.TabIndicator counter={totalRepositories} value={Tabs.TAB_REPOSITORIES}> <BookBookmark size={24} weight="bold"/> Repositories </Styled.TabIndicator>
+                    <Styled.TabIndicator counter={totalRepositoriesStarred} value={Tabs.TAB_STARRED}> <Star size={24} weight="bold" /> Starred </Styled.TabIndicator>
                 </Styled.HeaderTabIndicators>
                 <Styled.HeaderTabSearchFilters>
-                    <Search />
+                    <Search activeTab={activeTab}/>
                     <Filters filters={filters}/>
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>

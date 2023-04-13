@@ -1,19 +1,29 @@
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import * as Styled                         from './styled'
 import { ContextUserGithub }               from '../../contexts/ContextUserGithubProvider'
 import { MagnifyingGlass }                 from 'phosphor-react'
+import { Tabs } from '../UserRepositories'
+
+interface ISearchProps {
+    /** Aba ativa no momento */
+    activeTab: Tabs
+}
 
 /**
  * Componente de Barra de Pesquisa.
  */
-export default function Search() {
+export default function Search({ activeTab } : ISearchProps) {
     const [inputSearch, setInputSearch] = useState('')
     const { searchRepositories } = useContext(ContextUserGithub)
 
     function onSubmitSearchRepositories(e : FormEvent) {
         e.preventDefault()
-        searchRepositories(inputSearch)
+        searchRepositories(activeTab, inputSearch)
     }
+
+    useEffect(() => {
+        setInputSearch('')
+    }, [activeTab])
 
     return (
         <Styled.Container onSubmit={onSubmitSearchRepositories}>
