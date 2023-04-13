@@ -13,4 +13,6 @@ export interface IRepository {
     predominantLanguage: string,
     /** Quantidade de Branches do Repositório */
     branches: number,
+    /** Indica se o repositório está marcado com estrela (favoritado) */
+    starred?: boolean
 }

@@ -17,7 +17,6 @@ export const ContextUserGithub = createContext({} as IContextUserGithubValues)
 export default function ContextUserGithubProvider({ children } : IContextUserGithubProps) {
     const [user, setUser]                     = useState<IUser>({} as IUser)
     const [repositories, setRepositories]     = useState<IRepository[]>([])
-    const [starreds, setStarreds]             = useState<IRepository[]>([])
     const [loadingProfile, setLoadingProfile] = useState(true)
 
     /**
@@ -31,31 +30,12 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
     }
 
     /**
-     * Realiza uma pesquisa nos repositórios favoritados.
-     */
-    async function searchRepositoriesStarreds(search? : string) {
-        if (!search || search.length == 0) {
-            return loadStarredRepositories()
-        }
-        setStarreds(starredState => starredState.filter(starred => starred.name.toLowerCase().match(search.toLowerCase())))
-    }
-
-    /**
      * Carrega os repositórios inicialmente.
      */
     async function loadRepositories() {
         const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
         const userRepositories = await Api.fetchRepositories()
         setRepositories(userRepositories)
-    }
-
-    /**
-     * Carrega os repositórios favoritados inicialmente.
-     */
-    async function loadStarredRepositories() {
-        const Api = ApiGithub(USER_PROFILE_TO_INTERFACE)
-        const userStarredRepositories = await Api.fetchRepositories(true)
-        setStarreds(userStarredRepositories)
     }
 
     /**
@@ -66,7 +46,6 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         const userProfile =  await Api.fetchUser()
         setUser(userProfile)
         loadRepositories()
-        loadStarredRepositories()
         setTimeout(() => { /** Forçando um delay a mais para ver a tela de carregamento melhor */
             setLoadingProfile(loadState => {
                 document.title = 'Github Profile | ' + userProfile.name
@@ -83,9 +62,7 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         <ContextUserGithub.Provider value={{
             user, 
             repositories,
-            starreds,
             searchRepositories,
-            searchRepositoriesStarreds
         }}>
             { 
                 loadingProfile 

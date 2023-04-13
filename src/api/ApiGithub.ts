@@ -18,15 +18,32 @@ enum ApiUrl {
 interface IApiGitHubActions {
     /** Busca o Usuário do Github*/
     fetchUser: () => Promise<IUser>,
-    /**BUsca os Repositórios do Usuário do Github */
-    fetchRepositories: (bStarred? : boolean) => Promise<IRepository[]>,
+    /**Busca os Repositórios do Usuário do Github */
+    fetchRepositories: () => Promise<IRepository[]>,
 }
 
 /**
  * API para busca dos dados do Github.
  */
 export default function ApiGithub(user : string) : IApiGitHubActions {
-    
+
+    /**
+     * Formata o repositório no padrão do github para o repositório no padrão da aplicação.
+     */
+    function formatGithubRepositoryToRepository(gitHubRepository : any, starred : boolean = false) : IRepository {
+        const [ repOwner, repName ] = (gitHubRepository.full_name as string).split('/')
+        return {
+            id                 : gitHubRepository.id,
+            urlGithub          : gitHubRepository.html_url,
+            owner              : repOwner,
+            name               : repName,
+            predominantLanguage: gitHubRepository.language || 'Nenhuma',
+            description        : gitHubRepository.description,
+            branches           : randomNumberInRange(25), /** Número de branches será gerado aleatório pois na API não tem um retorno especifico, e para se obter este valor teria de fazer uma outra requisição para contar as branches de cada repositório (estou sem tempo e demanda performance) */
+            starred
+        } as IRepository
+    }
+
     return {
         fetchUser: async () => {
             const githubUser : any = await fetch(ApiUrl.GET_USER.replace(ApiUrl.USER_ENDPOINT, user))
@@ -42,24 +59,17 @@ export default function ApiGithub(user : string) : IApiGitHubActions {
             } as IUser
         },
 
-        fetchRepositories: async (bStarred : boolean = false) => {
-            const URL_GET_USER_REPOSITORIES = bStarred ? ApiUrl.GET_USER_REPOSITORIES_STARRED : ApiUrl.GET_USER_REPOSITORIES
-            const githubUserRepos = await fetch(URL_GET_USER_REPOSITORIES.replace(ApiUrl.USER_ENDPOINT, user))
-                                            .then(res => res.json())
-                                                .then(userRepositories => userRepositories) as Array<any>
-            return githubUserRepos.reduce((rep, githubRep) => {
-                const [ repOwner, repName ] = (githubRep.full_name as string).split('/')
-                rep.push({
-                    id:githubRep.id,
-                    urlGithub: githubRep.html_url,
-                    owner: repOwner,
-                    name: repName,
-                    predominantLanguage: githubRep.language || 'Nenhuma',
-                    description: githubRep.description,
-                    branches: randomNumberInRange(25) /** Número de branches será gerado aleatório pois na API não tem um retorno especifico, e para se obter este valor teria de fazer uma outra requisição para contar as branches de cada repositório (estou sem tempo e demanda performance) */
-                } as IRepository)
-                return rep
-            }, [] as IRepository[])
+        fetchRepositories: async () => {
+            const githubUserRepositories = await fetch(ApiUrl.GET_USER_REPOSITORIES.replace(ApiUrl.USER_ENDPOINT, user))
+                                                .then(res => res.json())
+                                                    .then(userRepositories => userRepositories) as Array<any>
+            const githubUserRepositoriesStarreds = await fetch(ApiUrl.GET_USER_REPOSITORIES_STARRED.replace(ApiUrl.USER_ENDPOINT, user))
+                                                        .then(res => res.json())
+                                                            .then(userRepositories => userRepositories) as Array<any>
+            return [
+                ...githubUserRepositories        .map((githubRepository) => formatGithubRepositoryToRepository(githubRepository, false)),
+                ...githubUserRepositoriesStarreds.map((githubRepository) => formatGithubRepositoryToRepository(githubRepository, true)),
+            ]
         }
     }
 }

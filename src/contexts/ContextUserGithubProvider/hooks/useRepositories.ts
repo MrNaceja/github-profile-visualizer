@@ -2,10 +2,9 @@ import { useContext }        from "react";
 import { ContextUserGithub } from "..";
 
 /**
- * @hook Resgata os Repositórios do perfil do contexto.
- * @returns [ Repositórios, Repositórios Favoritados ]
+ * @hook Resgata os Repositórios do usuário do perfil pelo contexto.
  */
 export default function useRepositories() {
-    const { repositories, starreds} = useContext(ContextUserGithub)
-    return [ repositories, starreds ]
+    const { repositories } = useContext(ContextUserGithub)
+    return repositories
 }
