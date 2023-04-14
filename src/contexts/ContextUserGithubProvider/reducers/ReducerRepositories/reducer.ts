@@ -1,6 +1,10 @@
-import { Tabs } from "../../../../components/UserRepositories";
-import { EActionsTypeRepositoriesState, IPropsActionRepositoriesState, IRepositoriesState } from "../../Interfaces/reducerRepositories";
-import { IRepository } from "../../Interfaces/repository";
+import { 
+    EActionsTypeRepositoriesState, 
+    IPropsActionRepositoriesState, 
+    IRepositoriesState, 
+    TPayloadTypeActionSearch} from "../../Interfaces/reducerRepositories";
+import { Tabs }               from "../../../../components/UserRepositories";
+import { IRepository }        from "../../Interfaces/repository";
 
 /**
  * Estado inicial dos repositórios.
@@ -28,11 +32,11 @@ export default function ReducerRepositories(state : IRepositoriesState, action :
                 totalRepositoriesStarred: repositoriesStarreds.length 
             } as IRepositoriesState
         case EActionsTypeRepositoriesState.ACTION_SEARCH_REPOSITORIES:
-            const {search, activeTab} = action.payload as { search:string, activeTab: Tabs }
+            const { search, activeTab : tabOnSearch } = action.payload as TPayloadTypeActionSearch
             return {
                 ...state,
-                repositories        : activeTab == Tabs.TAB_REPOSITORIES ? state.repositories        .filter(rep => rep.name.toLowerCase().match(search.toLowerCase())) : state.repositories,
-                repositoriesStarreds: activeTab == Tabs.TAB_STARRED      ? state.repositoriesStarreds.filter(rep => rep.name.toLowerCase().match(search.toLowerCase())) : state.repositoriesStarreds 
+                repositories        : tabOnSearch == Tabs.TAB_REPOSITORIES ? state.repositories        .filter(rep => rep.name.toLowerCase().match(search.toLowerCase())) : state.repositories,
+                repositoriesStarreds: tabOnSearch == Tabs.TAB_STARRED      ? state.repositoriesStarreds.filter(rep => rep.name.toLowerCase().match(search.toLowerCase())) : state.repositoriesStarreds 
             } as IRepositoriesState
         default: throw Error('Ação não esperada!')
     }

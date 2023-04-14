@@ -1,3 +1,4 @@
+import { Tabs } from "../../../components/UserRepositories";
 import { IRepository } from "./repository";
 
 export interface IRepositoriesState {
@@ -9,11 +10,15 @@ export interface IRepositoriesState {
 
 export enum EActionsTypeRepositoriesState {
     ACTION_LOAD_REPOSITORIES   = 'LOAD_REPOSITORIES',
-    ACTION_FILTER_REPOSITORIES = 'FILTER_REPOSITORIES',
     ACTION_SEARCH_REPOSITORIES = 'SEARCH_REPOSITORIES'
+}
+
+export type TPayloadTypeActionSearch = {
+    search: string,
+    activeTab: Tabs
 }
 
 export interface IPropsActionRepositoriesState {
     type: EActionsTypeRepositoriesState,
-    payload?: any
+    payload: any
 }

@@ -5,7 +5,7 @@ import { BookBookmark, Star } from 'phosphor-react'
 import Search                 from '../Search'
 import Repository             from '../Repository'
 import Filters, { IFilter }   from '../Filters'
-import { IRepository } from '../../contexts/ContextUserGithubProvider/Interfaces/repository';
+import { IRepository }        from '../../contexts/ContextUserGithubProvider/Interfaces/repository'
 
 /**
  * Abas de Repositório.
@@ -44,30 +44,16 @@ export default function UserRepositories() {
         }
     ]
 
-    const filterAllLanguages = filteredLanguages.length == 0
+    /**
+     * Filtra os repositórios pela linguagem predominante conforme filtros aplicados.
+     */
+    function filterRepositoriesByLanguages(repositoriesToFilter : IRepository[]) : IRepository[] {
+        const filterAllLanguages = filteredLanguages.length == 0
+        return repositoriesToFilter.filter(rep => filterAllLanguages || filteredLanguages.includes(rep.predominantLanguage))
+    }
 
-    // const repositories = allRepositories.reduce((repositories : IRepository[], repository) => {
-    //     if (!repository.starred) {
-    //         repositories.push(repository)
-    //         if (activeTab == Tabs.TAB_REPOSITORIES) {
-    //             if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
-    //             }
-    //         }
-    //     }
-    //     return repositories
-    // }, [] as IRepository[])
-    // const starreds = allRepositories.reduce(
-    //     (repositories : IRepository[], repository) => {
-    //         if (repository.starred) {
-    //             repositories.push(repository)
-    //             if (activeTab == Tabs.TAB_STARRED) {
-    //                 if (filterAllLanguages || filteredLanguages.includes(repository.predominantLanguage)) {
-    //                 }
-    //             }
-    //         }   
-    //         return repositories
-    //     }, [] as IRepository[]
-    // )
+    const repositoriesFiltered = filterRepositoriesByLanguages(repositories)
+    const starredsFiltered     = filterRepositoriesByLanguages(starreds)
 
     return (
         <Styled.Container orientation="horizontal" defaultValue={activeTab} value={activeTab} onValueChange={tab => setActiveTab(tab as Tabs)}>
@@ -82,17 +68,17 @@ export default function UserRepositories() {
                 </Styled.HeaderTabSearchFilters>
             </Styled.HeaderTab>
             <Styled.TabView value={Tabs.TAB_REPOSITORIES}>
-                <Styled.TabViewHint><strong>{repositories.length}</strong> Repositórios encontrados</Styled.TabViewHint>
+                <Styled.TabViewHint><strong>{repositoriesFiltered.length}</strong> Repositórios encontrados</Styled.TabViewHint>
                 {
-                    repositories.map(rep => (
+                    repositoriesFiltered.map(rep => (
                         <Repository repository={rep} key={rep.id}/>
                     ))
                 }
             </Styled.TabView>
             <Styled.TabView value={Tabs.TAB_STARRED}>
-                <Styled.TabViewHint><strong>{starreds.length}</strong> Repositórios favoritados encontrados</Styled.TabViewHint>
+                <Styled.TabViewHint><strong>{starredsFiltered.length}</strong> Repositórios favoritados encontrados</Styled.TabViewHint>
                 {
-                    starreds.map(repStarred => (
+                    starredsFiltered.map(repStarred => (
                         <Repository repository={repStarred} key={repStarred.id}/>
                     ))
                 }

@@ -21,8 +21,12 @@ export default function UserInfo() {
                     Informações Adicionais <CaretDown size={24} weight="bold"/>
                 </Styled.InfoLinksButtonCollapse>
                 <Styled.InfoLinks>
-                    <Styled.InfoLink> <Buildings size={16} /> {user.company} </Styled.InfoLink>
-                    <Styled.InfoLink> <MapPin size={16} /> {user.location} </Styled.InfoLink>
+                    {
+                        user.company && <Styled.InfoLink> <Buildings size={16} /> {user.company} </Styled.InfoLink>
+                    }
+                    {
+                        user.location && <Styled.InfoLink> <MapPin size={16} /> {user.location} </Styled.InfoLink>
+                    }
                     <Styled.InfoLink href={user.githubUrl} target='_blank'> <GithubLogo size={16} /> Ver Github </Styled.InfoLink>
                 </Styled.InfoLinks>
             </Styled.InfoLinksWrapper>

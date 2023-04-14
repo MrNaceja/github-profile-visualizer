@@ -3,7 +3,9 @@ import ApiGithub                                             from "../../api/Api
 import Loading                                               from "../../components/Loading";
 import { IUser, USER_PROFILE_TO_INTERFACE }                  from "./Interfaces/user";
 import { IContextUserGithubProps, IContextUserGithubValues } from "./Interfaces/context";
-import { EActionsTypeRepositoriesState }                     from './Interfaces/reducerRepositories';
+import { 
+    EActionsTypeRepositoriesState, 
+    TPayloadTypeActionSearch }                               from './Interfaces/reducerRepositories';
 import ReducerRepositories, { REPOSITORIES_INITIAL_STATE }   from "./reducers/ReducerRepositories/reducer";
 import { Tabs }                                              from "../../components/UserRepositories";
 
@@ -30,7 +32,7 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         }
         dispatchRepositoriesState({
             type: EActionsTypeRepositoriesState.ACTION_SEARCH_REPOSITORIES,
-            payload: {search, activeTab }
+            payload: {search, activeTab } as TPayloadTypeActionSearch
         })
     }
 
@@ -70,7 +72,7 @@ export default function ContextUserGithubProvider({ children } : IContextUserGit
         <ContextUserGithub.Provider value={{
             user, 
             repositoriesState,
-            searchRepositories,
+            searchRepositories
         }}>
             { 
                 loadingProfile 

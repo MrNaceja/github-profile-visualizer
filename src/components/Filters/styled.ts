@@ -40,7 +40,8 @@ export const FilterButton = styled(FiltersMenu.Trigger).attrs(props => ({
 export const FilterSelect = styled(FiltersMenu.Portal)``
 
 export const FilterModal = styled(FiltersMenu.Content).attrs(props => ({
-    sideOffset: 10
+    sideOffset: 10,
+    collisionPadding: 10
 } as FiltersMenu.MenuContentProps))`
     min-width: 220px;
     background-color: ${props => props.theme.LIGHT};
