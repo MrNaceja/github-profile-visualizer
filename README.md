@@ -1,13 +1,6 @@
-<div align='center'>
+# Visualizador de Perfil do Github
+ Projeto desenvolvido para fins de estudo e aprendizado em Front-edn nas tecnologias React e Typescript
  
-![Magazord](src/assets/logo-magazord.png)
- 
- </div>
-
-# Teste para vaga de front-end no Magazord.com.br
-Este repositório tem como fim testar os candidatos para vaga de front-end developer na empresa [Magazord](https://magazord.com.br).
-> Para esta vaga buscamos alguém apaixonado por HTML, CSS, JavaScript e atento aos detalhes!
-
 # **Desenvolvimento**
 
 ### **Ferramentas utilizadas**
@@ -20,20 +13,8 @@ Este repositório tem como fim testar os candidatos para vaga de front-end devel
 >> Utilizado estruturação de pastas prezando componentização organizada relevantes a cada contexto
 >> Realizado documentação nos programas
 
-### **Resumo do que foi feito**
+## Features
 
-> * **Recriado interface conforme** [Layout Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
->   * Desenvolvido algumas adaptações na interface
->   * Desenvolvido responsividade
->   * Adicionado novas features
-> ----
-> * **Desafio opcional**
->    * Criado API para busca dos dados do usuário dinamicamente conforme o mesmo fornecido pelo contexto
->    * Desenvolvido sistema de pesquisa através do componente de barra de pesquisa
->    * Desenvolvido sistema de filtragem através do componente de filtros
->    * Ao clicar no repositório será redirecionado para o repositório no github
-> ----
-> * **Novas features**
 >   * Desenvolvido tela de carregamento
 >   *  API dinâmica
 >   *  Desenvolvido animações
