@@ -5,11 +5,11 @@ import randomNumberInRange from '../utils/randomNumberInRange';
 /**
  * Enumerados para as rotas da api referentes a busca dos dados do usuário e seus repositórios.
  */
-enum ApiUrl {
-    USER_ENDPOINT                 = 'USER',
-    GET_USER                      = 'https://api.github.com/users/' + USER_ENDPOINT,
-    GET_USER_REPOSITORIES         = 'https://api.github.com/users/' + USER_ENDPOINT +'/repos',
-    GET_USER_REPOSITORIES_STARRED = 'https://api.github.com/users/' + USER_ENDPOINT +'/starred'
+const USER_ENDPOINT = '$USER$';
+const ApiUrl = {
+    GET_USER                     : 'https://api.github.com/users/' + USER_ENDPOINT,
+    GET_USER_REPOSITORIES        : 'https://api.github.com/users/' + USER_ENDPOINT +'/repos',
+    GET_USER_REPOSITORIES_STARRED: 'https://api.github.com/users/' + USER_ENDPOINT +'/starred'
 }
 
 /**
@@ -46,7 +46,7 @@ export default function ApiGithub(user : string) : IApiGitHubActions {
 
     return {
         fetchUser: async () => {
-            const githubUser : any = await fetch(ApiUrl.GET_USER.replace(ApiUrl.USER_ENDPOINT, user))
+            const githubUser : any = await fetch(ApiUrl.GET_USER.replace(USER_ENDPOINT, user))
                                             .then(res => res.json())
                                                 .then(userInfo => userInfo)
             return {
@@ -60,10 +60,10 @@ export default function ApiGithub(user : string) : IApiGitHubActions {
         },
 
         fetchRepositories: async () => {
-            const githubUserRepositories = await fetch(ApiUrl.GET_USER_REPOSITORIES.replace(ApiUrl.USER_ENDPOINT, user))
+            const githubUserRepositories = await fetch(ApiUrl.GET_USER_REPOSITORIES.replace(USER_ENDPOINT, user))
                                                 .then(res => res.json())
                                                     .then(userRepositories => userRepositories) as Array<any>
-            const githubUserRepositoriesStarreds = await fetch(ApiUrl.GET_USER_REPOSITORIES_STARRED.replace(ApiUrl.USER_ENDPOINT, user))
+            const githubUserRepositoriesStarreds = await fetch(ApiUrl.GET_USER_REPOSITORIES_STARRED.replace(USER_ENDPOINT, user))
                                                         .then(res => res.json())
                                                             .then(userRepositories => userRepositories) as Array<any>
             return [
