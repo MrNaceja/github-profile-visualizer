@@ -18,11 +18,6 @@ export const LoadingHeader = styled.header`
     align-items: center;
     gap: 1rem;
 `
-export const LoadingFooter = styled.footer`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
 
 export const LoadingLogo = styled(GitHubAvatarLogo)`
     fill: ${props => props.theme.GRAY_800};
@@ -39,22 +34,5 @@ export const LoadingMessage = styled.h1`
     color: ${props => props.theme.GRAY_300};
     @media screen and (max-width: 768px) {
         font-size: 1rem;
-    }
-`
-
-export const LoadingFrom = styled.h2.attrs(props => ({
-    children: 'from'
-}))`
-    font-size: 1rem;
-    font-weight: bold;
-    color: ${props => props.theme.GRAY_300};
-`
-
-export const LogoMagazord = styled.img`
-    width: 200px;
-    filter: grayscale(1);
-    transition: .2s;
-    :hover {
-        filter: grayscale(0);
     }
 `

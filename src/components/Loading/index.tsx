@@ -1,5 +1,4 @@
 import * as Styled  from './styled'
-import LogoMagazord from '../../assets/logo-magazord.png'
 
 interface ILoadingProps {
     /** Mensagem de carregamento */
@@ -16,10 +15,6 @@ export default function Loading({ message } : ILoadingProps) {
                 <Styled.LoadingLogo />
                 <Styled.LoadingMessage>{message}</Styled.LoadingMessage>
             </Styled.LoadingHeader>
-            <Styled.LoadingFooter>
-                <Styled.LoadingFrom />
-                <Styled.LogoMagazord src={LogoMagazord} alt="Logo Magazord"/>
-            </Styled.LoadingFooter>
         </Styled.Container>
     )
 }
